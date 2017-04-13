@@ -30,7 +30,6 @@ import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
 import '../styles/styles.scss';
-import '../styles/headings.css';
 
 // Application wide providers
 const APP_PROVIDERS = [
