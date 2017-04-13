@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{0D7937BF-BB78-440D-B111-FF6FB64CD470}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
+    <Content Include="config\empty.js" />
+    <Content Include="config\github-deploy\index.js" />
+    <Content Include="config\head-config.common.js" />
+    <Content Include="config\helpers.js" />
+    <Content Include="config\html-elements-plugin\index.js" />
+    <Content Include="config\karma.conf.js" />
+    <Content Include="config\protractor.conf.js" />
+    <Content Include="config\resource-override.js" />
+    <Content Include="config\spec-bundle.js" />
+    <Content Include="config\webpack.common.js" />
+    <Content Include="config\webpack.dev.js" />
+    <Content Include="config\webpack.github-deploy.js" />
+    <Content Include="config\webpack.prod.js" />
+    <Content Include="config\webpack.test.js" />
+    <Content Include="karma.conf.js" />
+    <Content Include="protractor.conf.js" />
+    <Content Include="src\app\app.component.css" />
+    <Content Include="src\app\home\home.component.css" />
+    <Content Include="src\app\home\home.component.html" />
+    <Content Include="src\assets\humans.txt" />
+    <Content Include="src\assets\icon\android-icon-144x144.png" />
+    <Content Include="src\assets\icon\android-icon-192x192.png" />
+    <Content Include="src\assets\icon\android-icon-36x36.png" />
+    <Content Include="src\assets\icon\android-icon-48x48.png" />
+    <Content Include="src\assets\icon\android-icon-72x72.png" />
+    <Content Include="src\assets\icon\android-icon-96x96.png" />
+    <Content Include="src\assets\icon\apple-icon-114x114.png" />
+    <Content Include="src\assets\icon\apple-icon-120x120.png" />
+    <Content Include="src\assets\icon\apple-icon-144x144.png" />
+    <Content Include="src\assets\icon\apple-icon-152x152.png" />
+    <Content Include="src\assets\icon\apple-icon-180x180.png" />
+    <Content Include="src\assets\icon\apple-icon-57x57.png" />
+    <Content Include="src\assets\icon\apple-icon-60x60.png" />
+    <Content Include="src\assets\icon\apple-icon-72x72.png" />
+    <Content Include="src\assets\icon\apple-icon-76x76.png" />
+    <Content Include="src\assets\icon\apple-icon-precomposed.png" />
+    <Content Include="src\assets\icon\apple-icon.png" />
+    <Content Include="src\assets\icon\browserconfig.xml" />
+    <Content Include="src\assets\icon\favicon-16x16.png" />
+    <Content Include="src\assets\icon\favicon-32x32.png" />
+    <Content Include="src\assets\icon\favicon-96x96.png" />
+    <Content Include="src\assets\icon\favicon.ico" />
+    <Content Include="src\assets\icon\ms-icon-144x144.png" />
+    <Content Include="src\assets\icon\ms-icon-150x150.png" />
+    <Content Include="src\assets\icon\ms-icon-310x310.png" />
+    <Content Include="src\assets\icon\ms-icon-70x70.png" />
+    <Content Include="src\assets\img\angular-logo.png" />
+    <Content Include="src\assets\img\angularclass-avatar.png" />
+    <Content Include="src\assets\img\angularclass-logo.png" />
+    <Content Include="src\assets\robots.txt" />
+    <Content Include="src\assets\service-worker.js" />
+    <Content Include="src\index.html" />
+    <Content Include="src\meta\humans.txt" />
+    <Content Include="src\meta\robots.txt" />
+    <Content Include="src\styles\headings.css" />
+    <Content Include="web.config" />
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".nvmrc" />
+    <Content Include=".travis.yml" />
+    <Content Include="Dockerfile" />
+    <Content Include="firebase.json" />
+    <Content Include="LICENSE" />
+    <Content Include="netlify.toml" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tsconfig.webpack.json" />
+    <Content Include="tslint.json" />
+    <Content Include="typedoc.json" />
+    <Content Include="src\assets\css\.gitkeep" />
+    <Content Include="src\assets\data.json" />
+    <Content Include="src\assets\manifest.json" />
+    <Content Include="src\assets\mock-data\mock-data.json" />
+    <Content Include="src\styles\styles.scss" />
+    <Content Include="src\styles\_variables.scss" />
+    <Content Include=".editorconfig" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\child-barrel.component.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\child-barrel.module.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\child-barrel.routes.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\index.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\barrel.component.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\barrel.module.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\barrel.routes.ts" />
+    <TypeScriptCompile Include="src\app\+barrel\index.ts" />
+    <TypeScriptCompile Include="src\app\+detail\+child-detail\child-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\+detail\+child-detail\child-detail.module.ts" />
+    <TypeScriptCompile Include="src\app\+detail\+child-detail\child-detail.routes.ts" />
+    <TypeScriptCompile Include="src\app\+detail\+child-detail\index.ts" />
+    <TypeScriptCompile Include="src\app\+detail\detail.component.ts" />
+    <TypeScriptCompile Include="src\app\+detail\detail.module.ts" />
+    <TypeScriptCompile Include="src\app\+detail\detail.routes.ts" />
+    <TypeScriptCompile Include="src\app\+detail\index.ts" />
+    <TypeScriptCompile Include="src\app\about\about.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\about\about.component.ts" />
+    <TypeScriptCompile Include="src\app\about\index.ts" />
+    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.e2e.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\app.resolver.ts" />
+    <TypeScriptCompile Include="src\app\app.routes.ts" />
+    <TypeScriptCompile Include="src\app\app.service.ts" />
+    <TypeScriptCompile Include="src\app\environment.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\home\home.e2e.ts" />
+    <TypeScriptCompile Include="src\app\home\index.ts" />
+    <TypeScriptCompile Include="src\app\home\title\index.ts" />
+    <TypeScriptCompile Include="src\app\home\title\title.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\home\title\title.service.ts" />
+    <TypeScriptCompile Include="src\app\home\x-large\index.ts" />
+    <TypeScriptCompile Include="src\app\home\x-large\x-large.directive.spec.ts" />
+    <TypeScriptCompile Include="src\app\home\x-large\x-large.directive.ts" />
+    <TypeScriptCompile Include="src\app\index.ts" />
+    <TypeScriptCompile Include="src\app\no-content\index.ts" />
+    <TypeScriptCompile Include="src\app\no-content\no-content.component.ts" />
+    <TypeScriptCompile Include="src\custom-typings.d.ts" />
+    <TypeScriptCompile Include="src\main.browser.aot.ts" />
+    <TypeScriptCompile Include="src\main.browser.ts" />
+    <TypeScriptCompile Include="src\polyfills.browser.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Angular_Seed_Complete</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>44985</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44985/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>
