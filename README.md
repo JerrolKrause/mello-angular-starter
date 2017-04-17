@@ -1,4 +1,14 @@
-An Angular Seed/Starter based on https://github.com/AngularClass/angular2-webpack-starter
+An Angular Seed/Starter based on the excellent https://github.com/AngularClass/angular2-webpack-starter
+
+Includes the following additional elements:
+<ul>
+<li>Angular 4</li>
+<li>TypeScript 2 barrels/paths</li>
+<li>Bootstrap 4</li>
+<li>Ng-Boostrap</li>
+<li>Ngrx-Store (Redux)</li>
+<ul>
+
 
 ```bash
 # clone our repo

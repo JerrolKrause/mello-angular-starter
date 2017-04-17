@@ -365,12 +365,6 @@ module.exports = function (options) {
       }),
 
 
-      new TsConfigPathsPlugin({
-          tsconfig: helpers.root('tsconfig.webpack.json')
-      }),
-
-
-
     ],
 
     /*

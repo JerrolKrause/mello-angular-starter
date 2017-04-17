@@ -1,32 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {
-  NgModule,
-  ApplicationRef
-} from '@angular/core';
-import {
-  removeNgStyles,
-  createNewHosts,
-  createInputTransfer
-} from '@angularclass/hmr';
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { Store, StoreModule } from '@ngrx/store'; // Ngrx store (Redux)
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Bootstrap
 
 /*
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
-// App is our top level component
-import { AppComponent } from './app.component';
+
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
 
+import { AppComponent } from './app.component'; // App is our top level component
+
+// Containers/Routes
 import { HomeComponent, NoContentComponent } from 'app-containers';
+// Reusuable components
+import { } from 'app-components';
+// Shared services
+import { AppState, InternalStateType } from 'app-shared';
 
+// Import master scss file
 import '../styles/styles.scss';
 
 // Application wide providers
@@ -55,7 +53,14 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    // NgRx
+    // Add ngrx reducers here, works just like a normal dependency injection in a constructor
+    StoreModule.provideStore({}),// { appReducer: appReducer, appState: appState, loan: LoanReducer }
+    // EffectsModule.run(), // LoanEffects
+    // Bootstrap
+    NgbModule.forRoot(),
+
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
