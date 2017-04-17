@@ -7,7 +7,7 @@ Includes the following additional elements:
 <li>Bootstrap 4</li>
 <li>Ng-Boostrap</li>
 <li>Ngrx-Store (Redux)</li>
-<ul>
+</ul>
 
 
 ```bash
