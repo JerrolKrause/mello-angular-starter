@@ -41,8 +41,8 @@
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.css" />
-    <Content Include="src\app\home\home.component.css" />
-    <Content Include="src\app\home\home.component.html" />
+    <Content Include="src\app\containers\home\home.component.css" />
+    <Content Include="src\app\containers\home\home.component.html" />
     <Content Include="src\assets\humans.txt" />
     <Content Include="src\assets\icon\android-icon-144x144.png" />
     <Content Include="src\assets\icon\android-icon-192x192.png" />
@@ -110,25 +110,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\child-barrel.component.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\child-barrel.module.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\child-barrel.routes.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\+child-barrel\index.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\barrel.component.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\barrel.module.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\barrel.routes.ts" />
-    <TypeScriptCompile Include="src\app\+barrel\index.ts" />
-    <TypeScriptCompile Include="src\app\+detail\+child-detail\child-detail.component.ts" />
-    <TypeScriptCompile Include="src\app\+detail\+child-detail\child-detail.module.ts" />
-    <TypeScriptCompile Include="src\app\+detail\+child-detail\child-detail.routes.ts" />
-    <TypeScriptCompile Include="src\app\+detail\+child-detail\index.ts" />
-    <TypeScriptCompile Include="src\app\+detail\detail.component.ts" />
-    <TypeScriptCompile Include="src\app\+detail\detail.module.ts" />
-    <TypeScriptCompile Include="src\app\+detail\detail.routes.ts" />
-    <TypeScriptCompile Include="src\app\+detail\index.ts" />
-    <TypeScriptCompile Include="src\app\about\about.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\about\about.component.ts" />
-    <TypeScriptCompile Include="src\app\about\index.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.e2e.ts" />
@@ -136,25 +117,21 @@
     <TypeScriptCompile Include="src\app\app.resolver.ts" />
     <TypeScriptCompile Include="src\app\app.routes.ts" />
     <TypeScriptCompile Include="src\app\app.service.ts" />
+    <TypeScriptCompile Include="src\app\components\index.ts" />
+    <TypeScriptCompile Include="src\app\containers\index.ts" />
     <TypeScriptCompile Include="src\app\environment.ts" />
-    <TypeScriptCompile Include="src\app\home\home.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\home\home.component.ts" />
-    <TypeScriptCompile Include="src\app\home\home.e2e.ts" />
-    <TypeScriptCompile Include="src\app\home\index.ts" />
-    <TypeScriptCompile Include="src\app\home\title\index.ts" />
-    <TypeScriptCompile Include="src\app\home\title\title.service.spec.ts" />
-    <TypeScriptCompile Include="src\app\home\title\title.service.ts" />
-    <TypeScriptCompile Include="src\app\home\x-large\index.ts" />
-    <TypeScriptCompile Include="src\app\home\x-large\x-large.directive.spec.ts" />
-    <TypeScriptCompile Include="src\app\home\x-large\x-large.directive.ts" />
+    <TypeScriptCompile Include="src\app\containers\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\containers\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\home\home.e2e.ts" />
     <TypeScriptCompile Include="src\app\index.ts" />
-    <TypeScriptCompile Include="src\app\no-content\index.ts" />
-    <TypeScriptCompile Include="src\app\no-content\no-content.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\no-content\no-content.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\custom-typings.d.ts" />
     <TypeScriptCompile Include="src\main.browser.aot.ts" />
     <TypeScriptCompile Include="src\main.browser.ts" />
     <TypeScriptCompile Include="src\polyfills.browser.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

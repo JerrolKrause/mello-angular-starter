@@ -12,6 +12,7 @@ const helpers = require('./helpers');
 const AssetsPlugin = require('assets-webpack-plugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
@@ -81,6 +82,11 @@ module.exports = function (options) {
       // An array of directory names to be resolved to the current directory
       modules: [helpers.root('src'), helpers.root('node_modules')],
 
+      plugins: [
+       new TsConfigPathsPlugin({
+           tsconfig: '../tsconfig.json'
+       })
+      ]
     },
 
     /*
@@ -356,7 +362,14 @@ module.exports = function (options) {
         disabled: !AOT,
         tsConfig: helpers.root('tsconfig.webpack.json'),
         resourceOverride: helpers.root('config/resource-override.js')
-      })
+      }),
+
+
+      new TsConfigPathsPlugin({
+          tsconfig: helpers.root('tsconfig.webpack.json')
+      }),
+
+
 
     ],
 
@@ -376,4 +389,5 @@ module.exports = function (options) {
     }
 
   };
+
 }

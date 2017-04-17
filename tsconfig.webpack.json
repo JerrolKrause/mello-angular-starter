@@ -10,11 +10,18 @@
     "noEmit": true,
     "noEmitHelpers": true,
     "importHelpers": true,
+    "baseUrl": ".",
     "strictNullChecks": false,
     "lib": [
       "es2015",
       "dom"
     ],
+    "paths": {
+      "app": [ "./src/app" ],
+      "app-shared": [ "./src/app/shared" ],
+      "app-containers": [ "./src/app/containers" ],
+      "app-components": [ "./src/app/components" ]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],
