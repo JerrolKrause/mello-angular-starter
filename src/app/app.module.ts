@@ -5,6 +5,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store'; // Ngrx store (Redux)
+import { EffectsModule  } from '@ngrx/effects';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Bootstrap
 
 /*
@@ -18,11 +19,23 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppComponent } from './app.component'; // App is our top level component
 
 // Containers/Routes
-import { HomeComponent, NoContentComponent } from 'app-containers';
+import {
+    HomeComponent,
+    NoContentComponent,
+    ScaffoldingComponent,
+    StoreExampleComponent
+} from 'app-containers';
+
 // Reusuable components
 import { } from 'app-components';
-// Shared services
-import { AppState, InternalStateType } from 'app-shared';
+
+// Shared services and elements
+import {
+    AppState,
+    InternalStateType,
+    StoreMainReducer,
+    StoreMainEffects
+} from 'app-shared';
 
 // Import master scss file
 import '../styles/styles.scss';
@@ -45,9 +58,11 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    HomeComponent,
-    NoContentComponent
+        AppComponent,
+        HomeComponent,
+        NoContentComponent,
+      ScaffoldingComponent,
+      StoreExampleComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -56,8 +71,8 @@ type StoreType = {
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     // NgRx
     // Add ngrx reducers here, works just like a normal dependency injection in a constructor
-    StoreModule.provideStore({}),// { appReducer: appReducer, appState: appState, loan: LoanReducer }
-    // EffectsModule.run(), // LoanEffects
+    StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// { appReducer: appReducer, appState: appState, loan: LoanReducer }
+    EffectsModule.run(StoreMainEffects),
     // Bootstrap
     NgbModule.forRoot(),
 

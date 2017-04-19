@@ -43,6 +43,8 @@
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
+    <Content Include="src\app\containers\scaffolding\scaffolding.component.html" />
+    <Content Include="src\app\containers\scaffolding\store-example\store-example.component.html" />
     <Content Include="src\assets\humans.txt" />
     <Content Include="src\assets\icon\android-icon-144x144.png" />
     <Content Include="src\assets\icon\android-icon-192x192.png" />
@@ -78,7 +80,6 @@
     <Content Include="src\index.html" />
     <Content Include="src\meta\humans.txt" />
     <Content Include="src\meta\robots.txt" />
-    <Content Include="src\styles\headings.css" />
     <Content Include="web.config" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
@@ -100,7 +101,6 @@
     <Content Include="src\assets\manifest.json" />
     <Content Include="src\assets\mock-data\mock-data.json" />
     <Content Include="src\styles\styles.scss" />
-    <Content Include="src\styles\_variables.scss" />
     <Content Include=".editorconfig" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
@@ -116,6 +116,8 @@
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\app.resolver.ts" />
     <TypeScriptCompile Include="src\app\app.routes.ts" />
+    <TypeScriptCompile Include="src\app\containers\scaffolding\scaffolding.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\scaffolding\store-example\store-example.component.ts" />
     <TypeScriptCompile Include="src\app\shared\app.service.ts" />
     <TypeScriptCompile Include="src\app\components\index.ts" />
     <TypeScriptCompile Include="src\app\containers\index.ts" />
@@ -126,6 +128,9 @@
     <TypeScriptCompile Include="src\app\index.ts" />
     <TypeScriptCompile Include="src\app\containers\no-content\no-content.component.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\main\main.actions.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\main\main.effects.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\main\main.reducer.ts" />
     <TypeScriptCompile Include="src\custom-typings.d.ts" />
     <TypeScriptCompile Include="src\main.browser.aot.ts" />
     <TypeScriptCompile Include="src\main.browser.ts" />

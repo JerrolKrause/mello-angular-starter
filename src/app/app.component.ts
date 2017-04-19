@@ -18,33 +18,24 @@ import {
     './app.component.css'
   ],
   template: `
+<div class="container">
     <nav>
       <a [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Home
       </a>
-      <a [routerLink]=" ['./detail'] "
+      <a [routerLink]=" ['./scaffolding'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
+        Scaffolding
       </a>
     </nav>
+</div>
 
     <main>
       <router-outlet></router-outlet>
     </main>
 
+<div class="container">
     <footer>
       <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
       <div>
@@ -53,6 +44,7 @@ import {
         </a>
       </div>
     </footer>
+</div>
   `
 })
 export class AppComponent implements OnInit {

@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Scaffolding Page</h1>
+    <p>Contains lots of helpful code snippets for rapid development.</p>
+    <hr />
+
+    <h2>API call</h2>
+    <div class="row">
+        <div class="col-6">
+            <p>With subscribe</p>
+            <ul>
+                <li *ngFor="let user of users">{{user.name}}</li>
+            </ul>
+            <div *ngIf="!users"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
+        </div>
+        <div class="col-6">
+            <p>With Async Pipe and only 1 sub</p>
+            <div *ngIf="users2 | async as users2$; else loading">
+                <ul>
+                    <li *ngFor="let user of users2$">{{user.name}}</li>
+                </ul>
+            </div>
+            <ng-template #loading><i class="fa fa-spinner fa-spin"></i> Loading...</ng-template>
+        </div>
+    </div>
+
+    <hr />
+    <store-example></store-example>
+</div>
