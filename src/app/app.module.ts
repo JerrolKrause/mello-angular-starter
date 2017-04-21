@@ -20,6 +20,11 @@ import { AppComponent } from './app.component'; // App is our top level componen
 
 // Containers/Routes
 import {
+    //Layout
+    LayoutMainComponent,
+    HeaderComponent,
+    FooterComponent,
+    //Routes
     HomeComponent,
     NoContentComponent,
     ScaffoldingComponent,
@@ -65,6 +70,9 @@ type StoreType = {
     bootstrap: [ AppComponent ],
     declarations: [
         AppComponent,
+        LayoutMainComponent,
+        HeaderComponent,
+        FooterComponent,
         HomeComponent,
         NoContentComponent,
         ScaffoldingComponent,

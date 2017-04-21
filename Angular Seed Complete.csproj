@@ -46,6 +46,9 @@
     <Content Include="src\app\containers\home\home.component.html" />
     <Content Include="src\app\containers\scaffolding\scaffolding.component.html" />
     <Content Include="src\app\containers\scaffolding\store-example\store-example.component.html" />
+    <Content Include="src\app\containers\_layout\footer\footer.component.html" />
+    <Content Include="src\app\containers\_layout\header\header.component.html" />
+    <Content Include="src\app\containers\_layout\main\layout-main.component.html" />
     <Content Include="src\assets\humans.txt" />
     <Content Include="src\assets\icon\android-icon-144x144.png" />
     <Content Include="src\assets\icon\android-icon-192x192.png" />
@@ -121,6 +124,9 @@
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\scaffolding.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\store-example\store-example.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\_layout\footer\footer.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\_layout\header\header.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\_layout\main\layout-main.component.ts" />
     <TypeScriptCompile Include="src\app\shared\app.service.ts" />
     <TypeScriptCompile Include="src\app\components\index.ts" />
     <TypeScriptCompile Include="src\app\containers\index.ts" />
@@ -139,9 +145,7 @@
     <TypeScriptCompile Include="src\main.browser.ts" />
     <TypeScriptCompile Include="src\polyfills.browser.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\containers\_layout\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
