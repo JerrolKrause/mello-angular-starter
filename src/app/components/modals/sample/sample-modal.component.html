@@ -1,0 +1,23 @@
+<form name="formModal" #formModal="ngForm" (ngSubmit)="submit()">
+
+    <div class="modal-header">
+        <h3 class="modal-title"><i class="fa fa-thumbs-up"></i> Sample Modal</h3>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <ul>
+            <li *ngFor="let item of data">{{item.name}}</li>
+        </ul>
+    </div>
+
+    <div class="modal-footer" style="justify-content: space-between;">
+        <button type="button" class="btn btn-info-outline float-left pull-left" (click)="activeModal.dismiss('Close click')">Cancel</button>
+        <button type="submit" class="btn btn-info" aria-label="Close" [disabled]="!formModal.form.valid || inProgress" [ngClass]="{'btn-inprogress':inProgress}">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i> Submit
+        </button>
+    </div>
+
+</form>

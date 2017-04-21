@@ -7,20 +7,32 @@ import { AppState } from 'app-shared';
 })
 export class ScaffoldingComponent implements OnInit {
 
-    public users: any;
-    public users2: any;
-
+    public users: any = [];
+    public error: boolean;
+    
     constructor(
         private appState: AppState
     ) {
-        this.users2 = this.appState.getMockUsers(); //API call with Async Pipe
     }
 
     public ngOnInit() {
         //API call with subscribe
-        this.appState.getMockUsers().subscribe(res => {
-            this.users = res;
-        });
-  }
+        this.appState.getMockUsers().subscribe(
+            res => {
+                this.users = res;
+            },
+            res => {
+                this.error = true;
+            }
+        );
+    }
+
+
+    /**
+     * 
+     */
+    public doCoolStuff() {
+        console.log('Doing cool stuff!');
+    }
 
 }

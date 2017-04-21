@@ -4,25 +4,21 @@
     <hr />
 
     <h2>API call</h2>
-    <div class="row">
-        <div class="col-6">
-            <p>With subscribe</p>
-            <ul>
-                <li *ngFor="let user of users">{{user.name}}</li>
-            </ul>
-            <div *ngIf="!users"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
-        </div>
-        <div class="col-6">
-            <p>With Async Pipe and only 1 sub</p>
-            <div *ngIf="users2 | async as users2$; else loading">
-                <ul>
-                    <li *ngFor="let user of users2$">{{user.name}}</li>
-                </ul>
-            </div>
-            <ng-template #loading><i class="fa fa-spinner fa-spin"></i> Loading...</ng-template>
-        </div>
-    </div>
-
+    <p>With subscribe</p>
+    <div *ngIf="!users.length && !error"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
+    <div *ngIf="error" class="alert alert-danger"><i class="fa fa-alert"></i> Error loading users</div>
+    <ul *ngIf="users.length">
+        <li *ngFor="let user of users">{{user.name}}</li>
+    </ul>
     <hr />
+
+    <h2>Store Example</h2>
     <store-example></store-example>
+    <hr />
+
+    <h2>Ng-Bootstrap modal</h2>
+    <p>
+        <button-modal modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">Click Me!</button-modal>
+    </p>
+    <hr />
 </div>

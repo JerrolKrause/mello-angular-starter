@@ -27,7 +27,12 @@ import {
 } from 'app-containers';
 
 // Reusuable components
-import { } from 'app-components';
+import {
+    ButtonModalComponent,
+
+    //Ng-bootstrap modals also need to be added below to "entryComponents"
+    SampleModalComponent
+} from 'app-components';
 
 // Shared services and elements
 import {
@@ -36,6 +41,7 @@ import {
     StoreMainReducer,
     StoreMainEffects
 } from 'app-shared';
+
 
 // Import master scss file
 import '../styles/styles.scss';
@@ -56,31 +62,34 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
-  declarations: [
+    bootstrap: [ AppComponent ],
+    declarations: [
         AppComponent,
         HomeComponent,
         NoContentComponent,
-      ScaffoldingComponent,
-      StoreExampleComponent
+        ScaffoldingComponent,
+        StoreExampleComponent,
+        ButtonModalComponent,
+        SampleModalComponent
   ],
-  imports: [ // import Angular's modules
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    // NgRx
-    // Add ngrx reducers here, works just like a normal dependency injection in a constructor
-    StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// { appReducer: appReducer, appState: appState, loan: LoanReducer }
-    EffectsModule.run(StoreMainEffects),
-    // Bootstrap
-    NgbModule.forRoot(),
-
+  // import Angular's modules
+    imports: [ 
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+        // NgRx
+        // Add ngrx reducers here, works just like a normal dependency injection in a constructor
+        StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// Inject stores here
+        EffectsModule.run(StoreMainEffects),
+        // Bootstrap
+        NgbModule.forRoot()
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
-    APP_PROVIDERS
-  ]
+    providers: [ // expose our Services and Providers into Angular's dependency injection
+        ENV_PROVIDERS,
+        APP_PROVIDERS
+    ],
+    entryComponents: [ SampleModalComponent ]
 })
 export class AppModule {
 

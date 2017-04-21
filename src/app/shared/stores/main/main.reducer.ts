@@ -9,6 +9,8 @@ export const StoreMainActions = {
     USERS_ADD: 'USERS_ADD', // Make POST to API
     USERS_ADDED: 'USERS_ADDED', // On success, load into store
 
+    MODAL : 'MODAL', //???
+
     // Holds success responses, usually for API interaction
     SUCCESS: 'SUCCESS',
     // Waiting/In progress, usually for API interaction
