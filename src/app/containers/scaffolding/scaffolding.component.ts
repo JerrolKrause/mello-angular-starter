@@ -31,7 +31,7 @@ export class ScaffoldingComponent implements OnInit {
     /**
      * 
      */
-    public doCoolStuff() {
+    public doCoolStuff($event) {
         console.log('Doing cool stuff!');
     }
 

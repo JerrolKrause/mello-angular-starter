@@ -7,11 +7,12 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SampleModalComponent implements OnInit {
 
-    private data: any; // Data is actually passed through the modal service not here
- 
+    public inProgress: boolean = false;
+    public data: any; // Data is actually passed through the modal service not here
+    
     constructor(
         private modalService: NgbModal,
-        private activeModal: NgbActiveModal
+        public activeModal: NgbActiveModal
     ) { }
 
     ngOnInit() {

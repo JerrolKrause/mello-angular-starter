@@ -27,7 +27,7 @@ const initialLoanState = {
     errors: {}
 };
 
-export const StoreMainReducer = (state: any = initialLoanState, { type, payload }) => {
+export function StoreMainReducer(state: any = initialLoanState, { type, payload }) {
     //console.log('STORE REDUCER:', type, payload);
 
     switch (type) {
