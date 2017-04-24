@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StoreMainActions } from "app-shared";
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'store-example',
@@ -10,28 +10,27 @@ import { StoreMainActions } from "app-shared";
 })
 export class StoreExampleComponent implements OnInit {
 
-    storeMain$: any;
+    storeMain$: Observable<IStoreMain>;
     user: string;
 
     constructor(
-        private store: Store<any>
+        private store: Store<IStoreMain>
     ) {
         this.storeMain$ = this.store.select('StoreMainReducer');// Sub to store
     }
 
     public ngOnInit() {
-        //Reset state on every load
+        // Reset state on every load, don't do this if the store is persistant
         this.store.dispatch({
             type: StoreMainActions.RESET_STATE,
             payload: null
         });
-        //Load users into the store
+        // Load users into the store
         this.store.dispatch({
             type: StoreMainActions.USERS_LOAD,
             payload: null
-        });
+        }); 
     }
-
 
     /**
      * Add a user

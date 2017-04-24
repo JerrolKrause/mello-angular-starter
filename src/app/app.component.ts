@@ -12,9 +12,7 @@ import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.component.css'
-  ],
+  //styleUrls: ['./app.component.css'],
   template: `
     <main>
       <router-outlet></router-outlet>
@@ -30,7 +28,6 @@ export class AppComponent implements OnInit {
     ) {}
 
     public ngOnInit() {
-
         // Change the document title on route change. Page titles are in app.routes.ts
         this.router.events
             .filter(event => event instanceof NavigationEnd)

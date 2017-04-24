@@ -45,7 +45,6 @@ import {
     StoreMainEffects
 } from 'app-shared';
 
-
 // Import master scss file
 import '../styles/styles.scss';
 

@@ -28,7 +28,7 @@ export class ScaffoldingComponent implements OnInit {
     }
 
     /**
-     * 
+     * Callback function for a successful modal close event
      */
     public doCoolStuff($event) {
         console.log('Doing cool stuff!');

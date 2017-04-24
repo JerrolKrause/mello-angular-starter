@@ -9,7 +9,7 @@ export const StoreMainActions = {
     USERS_ADD: 'USERS_ADD', // Make POST to API
     USERS_ADDED: 'USERS_ADDED', // On success, load into store
 
-    MODAL : 'MODAL', //???
+    MODAL : 'MODAL', //??? Add modals to state management
 
     // Holds success responses, usually for API interaction
     SUCCESS: 'SUCCESS',
@@ -20,14 +20,14 @@ export const StoreMainActions = {
 };
 
 //Define initial store state
-const initialLoanState = {
+const initialLoanState: IStoreMain = {
     users: [],
     waiting: {},
     success: {},
     errors: {}
 };
 
-export function StoreMainReducer(state: any = initialLoanState, { type, payload }) {
+export function StoreMainReducer(state: IStoreMain = initialLoanState, { type, payload }) {
     //console.log('STORE REDUCER:', type, payload);
 
     switch (type) {

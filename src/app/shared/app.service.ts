@@ -14,6 +14,29 @@ export class AppState {
     ) {
     }
 
+    /**
+    * Make a mock rest API call
+    */
+    public getMockUsers() {
+        let url = 'https://jsonplaceholder.typicode.com/users';
+        return this.http.get(url)
+            .delay(2000)
+            .map(result => result.json());
+    } // end getMockData
+
+    /**
+    * Make a mock rest API call, post
+    */
+    public postMockUser(user) {
+        let url = 'https://jsonplaceholder.typicode.com/users';
+        return this.http.post(url, user);
+    } // end getMockData
+
+
+
+    /********************
+    * HMR State Management
+    *********************/
     public _state: InternalStateType = { };
 
     // already return a clone of the current state
@@ -40,23 +63,5 @@ export class AppState {
         // simple object clone
         return JSON.parse(JSON.stringify( object ));
     }
-
-    /**
-     * Make a mock rest API call
-     */
-    public getMockUsers() {
-        let url = 'https://jsonplaceholder.typicode.com/users';
-        return this.http.get(url)
-            .delay(2000)
-            .map(result => result.json());
-    } // end getMockData
-
-    /**
-    * Make a mock rest API call, post
-    */
-    public postMockUser(user) {
-        let url = 'https://jsonplaceholder.typicode.com/users';
-        return this.http.post(url, user);
-    } // end getMockData
-
+    
 }

@@ -128,3 +128,15 @@ interface ErrorConstructor extends ErrorStackTraceLimit {}
 interface NodeRequireFunction extends Es6PromiseLoader  {}
 interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
+
+// Default type for a store, just state elements
+interface IStore {
+    waiting: object,
+    success: object,
+    errors: object
+}
+
+// Type for main store. Located in the reducer
+interface IStoreMain extends IStore {
+    users: any[], // Just for demo purposes, coming from https://jsonplaceholder.typicode.com/users
+}
