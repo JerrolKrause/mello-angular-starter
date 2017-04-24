@@ -51,7 +51,7 @@ describe(`Home`, () => {
 
     fixture.detectChanges(); // trigger initial data binding
   });
-
+    /*
   it('should have default data', () => {
     expect(comp.localState).toEqual({ value: '' });
   });
@@ -67,5 +67,5 @@ describe(`Home`, () => {
     comp.ngOnInit();
     expect(console.log).toHaveBeenCalled();
   });
-
+    */
 });

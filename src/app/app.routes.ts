@@ -6,7 +6,7 @@ export const ROUTES: Routes = [
     {
         path: '', component: LayoutMainComponent,
         children: [
-            { path: '', component: HomeComponent },
+            { path: '', component: HomeComponent},
             { path: 'scaffolding', component: ScaffoldingComponent },
             { path: '**', component: NoContentComponent },
         ]

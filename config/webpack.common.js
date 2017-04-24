@@ -28,9 +28,10 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
-  baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
+    title: 'Angular Seed Complete',
+    description: 'A rapid starter for Angular based single page apps. Contains Angular 4, Typescript 2, Bootstrap 4, Ng-Bootstrap and Ngrx-Store (Redux).',
+    baseUrl: '/',
+    isDevServer: helpers.isWebpackDevServer()
 };
 
 /*

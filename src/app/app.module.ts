@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
@@ -95,7 +95,8 @@ type StoreType = {
   ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
-        APP_PROVIDERS
+        APP_PROVIDERS,
+        Title
     ],
     entryComponents: [ SampleModalComponent ]
 })
