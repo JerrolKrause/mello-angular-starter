@@ -13,7 +13,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Bootstrap
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
-
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 
 import { AppComponent } from './app.component'; // App is our top level component
@@ -34,8 +33,7 @@ import {
 // Reusuable components
 import {
     ButtonModalComponent,
-
-    //Ng-bootstrap modals also need to be added below to "entryComponents"
+    //Ng-bootstrap modals also need to be added in this file to "entryComponents"
     SampleModalComponent
 } from 'app-components';
 
@@ -97,7 +95,7 @@ type StoreType = {
         ENV_PROVIDERS,
         APP_PROVIDERS,
         Title
-    ],
+    ], // Ng-bootstrap modals
     entryComponents: [ SampleModalComponent ]
 })
 export class AppModule {

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'home',  // <home></home>
@@ -9,12 +8,10 @@ import { Title } from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
 
     constructor(
-        private title: Title
     ) {
     }
 
     public ngOnInit() {
-        this.title.setTitle('Angular Seed Complete');
     }
 
 }
