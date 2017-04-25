@@ -11,21 +11,27 @@ export type InternalStateType = {
 export class AppState {
 
     public usersUrl: string = 'https://jsonplaceholder.typicode.com/users';
+    private cache: any = {};
 
     constructor(
         private http: Http
     ) {
-       
     }
 
     /**
-    * Make a mock rest API call
-    */
-    public getMockUsers(): Observable<Response> {
-        return this.http.get(this.usersUrl)
-            .delay(2000)
-            .map(result => result.json());
-    } // end getMockData
+     * Make get request and cache the result
+     * @param updateCache - Pass true to refresh the cache
+     */
+    public getMockUsers(updateCache?: boolean): Observable<Response> {
+        if (!this.cache[this.usersUrl]){
+            this.cache[this.usersUrl] = this.http.get(this.usersUrl)
+                .delay(2000)
+                .map(result => result.json())
+                .publishReplay(1)
+                .refCount();
+        }
+        return this.cache[this.usersUrl];
+    } // end getMockUsersCached
 
     /**
     * Make a mock rest API call, post
@@ -35,7 +41,6 @@ export class AppState {
             .delay(2000);
         //.map(result => result.json());
     } // end getMockData
-
 
 
     /********************

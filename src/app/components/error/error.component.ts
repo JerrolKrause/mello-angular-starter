@@ -20,6 +20,7 @@ export class ErrorComponent implements OnInit {
                 return key;
             }
         });
+        console.log(this.error)
     }
 
 }

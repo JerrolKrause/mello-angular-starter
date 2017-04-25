@@ -1,8 +1,5 @@
-﻿
-
-.alert{
+﻿.alert{
     &.icon:before{font-family: FontAwesome;}
     &.alert-danger.icon:before{content: "\f071";}
-
-
+    &.alert-success.icon:before{content: "\f164";}
 }

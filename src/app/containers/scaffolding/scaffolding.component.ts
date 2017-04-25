@@ -25,7 +25,7 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
             .takeUntil(this.ngUnsubscribe) // Register for easy un-sub
             .subscribe(
                 users => this.users = users, // Get users
-                error => { error.errorMsg = 'Error getting users'; this.error = error; }, // Errors
+                error => { error.errorMsg = 'Error getting users.'; console.log(error); this.error = error; }, // Errors
                 () => this.isLoading = false // End loading
             );
     }
