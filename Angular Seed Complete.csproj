@@ -41,6 +41,7 @@
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.css" />
+    <Content Include="src\app\components\error\error.component.html" />
     <Content Include="src\app\components\modals\sample\sample-modal.component.html" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
@@ -106,6 +107,8 @@
     <Content Include="src\assets\mock-data\mock-data.json" />
     <Content Include="src\styles\styles.scss" />
     <Content Include=".editorconfig" />
+    <Content Include="src\styles\components\accordions.scss" />
+    <Content Include="src\styles\components\alerts.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -121,6 +124,7 @@
     <TypeScriptCompile Include="src\app\app.resolver.ts" />
     <TypeScriptCompile Include="src\app\app.routes.ts" />
     <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\components\error\error.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\scaffolding.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\store-example\store-example.component.ts" />
@@ -145,7 +149,9 @@
     <TypeScriptCompile Include="src\main.browser.ts" />
     <TypeScriptCompile Include="src\polyfills.browser.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\styles\globals\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -16,7 +16,7 @@ export class StoreExampleComponent implements OnInit {
     constructor(
         private store: Store<IStoreMain>
     ) {
-        this.storeMain$ = this.store.select('StoreMainReducer');// Sub to store
+        this.storeMain$ = this.store.select('StoreMainReducer');// Sub to store via async pipe
     }
 
     public ngOnInit() {

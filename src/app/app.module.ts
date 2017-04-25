@@ -32,6 +32,7 @@ import {
 
 // Reusuable components
 import {
+    ErrorComponent,
     ButtonModalComponent,
     //Ng-bootstrap modals also need to be added in this file to "entryComponents"
     SampleModalComponent
@@ -67,12 +68,15 @@ type StoreType = {
     bootstrap: [ AppComponent ],
     declarations: [
         AppComponent,
+        // Containers
         LayoutMainComponent,
         HeaderComponent,
         FooterComponent,
         HomeComponent,
         NoContentComponent,
         ScaffoldingComponent,
+        // Components
+        ErrorComponent,
         StoreExampleComponent,
         ButtonModalComponent,
         SampleModalComponent

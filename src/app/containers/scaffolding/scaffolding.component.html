@@ -3,22 +3,26 @@
     <p>Contains lots of helpful code snippets for rapid development.</p>
     <hr />
 
-    <h2>API call</h2>
-    <p>With subscribe</p>
-    <div *ngIf="!users.length && !error"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
-    <div *ngIf="error" class="alert alert-danger"><i class="fa fa-alert"></i> Error loading users</div>
-    <ul *ngIf="users.length">
-        <li *ngFor="let user of users">{{user.name}}</li>
-    </ul>
-    <hr />
+    <div class="row">
+        <div class="col-6">
+            <h2>API call with subscribe</h2>
+            <div *ngIf="isLoading && !error"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
+            <error *ngIf="error" [error]="error"></error>
+            <ul *ngIf="users">
+                <li *ngFor="let user of users">{{user.name}}</li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <h2>Ng-Bootstrap modal</h2>
+            <p>
+                <button-modal modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">Add New User</button-modal>
+            </p>
+        </div>
 
+    </div>
+    <hr />
     <h2>Store Example</h2>
     <store-example></store-example>
     <hr />
 
-    <h2>Ng-Bootstrap modal</h2>
-    <p>
-        <button-modal modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">Show Users In Modal</button-modal>
-    </p>
-    <hr />
 </div>

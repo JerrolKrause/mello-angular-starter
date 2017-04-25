@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
 
 export type InternalStateType = {
@@ -9,17 +10,19 @@ export type InternalStateType = {
 @Injectable()
 export class AppState {
 
+    public usersUrl: string = 'https://jsonplaceholder.typicode.com/users';
+
     constructor(
         private http: Http
     ) {
+       
     }
 
     /**
     * Make a mock rest API call
     */
-    public getMockUsers() {
-        let url = 'https://jsonplaceholder.typicode.com/users';
-        return this.http.get(url)
+    public getMockUsers(): Observable<Response> {
+        return this.http.get(this.usersUrl)
             .delay(2000)
             .map(result => result.json());
     } // end getMockData
@@ -27,9 +30,10 @@ export class AppState {
     /**
     * Make a mock rest API call, post
     */
-    public postMockUser(user) {
-        let url = 'https://jsonplaceholder.typicode.com/users';
-        return this.http.post(url, user);
+    public postMockUser(user): Observable<Response> {
+        return this.http.post(this.usersUrl, user)
+            .delay(2000);
+        //.map(result => result.json());
     } // end getMockData
 
 
