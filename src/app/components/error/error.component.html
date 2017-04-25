@@ -1,0 +1,25 @@
+﻿<div class="alert alert-danger icon">
+    <i class="fa fa-alert"></i> 
+    {{error.errorMsg}}
+    <hr/>
+
+    <ngb-accordion #acc="ngbAccordion" class="accordion-inline">
+        <ngb-panel>
+            <template ngbPanelTitle>
+                <span>See error details:</span>
+            </template>
+            <template ngbPanelContent>
+                <table class="table table-sm">
+                    <tbody>
+                        <tr *ngFor="let key of errorOfKeys">
+                            <td><strong>{{key}}</strong></td>
+                            <td>{{error[key]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </template>
+        </ngb-panel>
+    </ngb-accordion>
+
+
+</div>

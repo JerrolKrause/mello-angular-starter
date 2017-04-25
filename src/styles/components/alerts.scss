@@ -1,0 +1,8 @@
+﻿
+
+.alert{
+    &.icon:before{font-family: FontAwesome;}
+    &.alert-danger.icon:before{content: "\f071";}
+
+
+}
