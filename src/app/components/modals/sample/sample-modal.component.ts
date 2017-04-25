@@ -12,7 +12,7 @@ import { AppState } from 'app-shared';
 export class SampleModalComponent implements OnInit {
 
     private ngUnsubscribe: Subject<void> = new Subject<void>(); // Holds observables to unsub from
-    public inProgress: boolean = false;
+    public waiting: boolean = false;
     public error: IErrorApi;
     public data: any; // Data is actually passed through the modal service not here
 
@@ -32,7 +32,7 @@ export class SampleModalComponent implements OnInit {
      */
     submit() {
 
-        this.inProgress = true;
+        this.waiting = true;
         this.error = null;
 
         this.appState.postMockUser(this.user)
@@ -40,7 +40,7 @@ export class SampleModalComponent implements OnInit {
             .subscribe(
                 success => this.activeModal.close(success.json()), // On Success, fire the onSuccess method passed to the button modal and pass the api response
                 error => { error.errorMsg = 'Error getting users'; this.error = error; }, // On error, show error message
-                () => this.inProgress = false // On complete, end loading
+                () => this.waiting = false // On complete, end loading
             )
     }//end submit
 

@@ -11,7 +11,7 @@ export type InternalStateType = {
 export class AppState {
 
     public usersUrl: string = 'https://jsonplaceholder.typicode.com/users';
-    private cache: any = {};
+    private cache: any = {}; // Cache API responses using the URL as a primary key
 
     constructor(
         private http: Http

@@ -5,6 +5,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+//import { GlobalErrorHandler } from 'app-shared';
+
 /*
  * App Component
  * Top Level Component
@@ -12,19 +14,22 @@ import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  //styleUrls: ['./app.component.css'],
   template: `
     <main>
       <router-outlet></router-outlet>
     </main>
+    <div class="alert alert-danger icon sticky-error" id="errorApp" style="display:none;"></div>
   `
 })
 export class AppComponent implements OnInit {
- 
+
+    errorApp: string;
+
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private title: Title
+        private title: Title,
+        //private globalErrorHandler: GlobalErrorHandler
     ) {}
 
     public ngOnInit() {
@@ -39,6 +44,21 @@ export class AppComponent implements OnInit {
             .filter(route => route.outlet === 'primary')
             .mergeMap(route => route.data)
             .subscribe((event) => this.title.setTitle(event['title']));
+
+        /*
+        this.globalErrorHandler.error$.subscribe(
+            error => {
+                console.log('Passed error to app component', error);
+                this.errorApp = error
+            },
+            stuff => {
+                console.log('Error getting error', stuff);
+            }
+        );
+        */
+        
+
     }
+
 
 }

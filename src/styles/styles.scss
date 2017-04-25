@@ -1,8 +1,19 @@
-/* this file will be extracted to main dist folder and is imported in index.html */
-/* This file is for setting global styles  */
+/* This file will be extracted to main dist folder and is imported in index.html */
+
+//Vendor dependencies
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 $fa-font-path:"../../node_modules/font-awesome/fonts";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
-@import "components/accordions.scss";
-@import "components/alerts.scss";
+//Global elements
+@import "globals/variables";
+@import "globals/mixins";
+@import "globals/layout";
+@import "globals/interactive";
+@import "globals/typography";
+@import "globals/forms";
+
+//Components
+@import "components/accordions";
+@import "components/alerts";
+@import "components/buttons";

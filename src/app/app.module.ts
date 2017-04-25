@@ -1,7 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, ErrorHandler } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store'; // Ngrx store (Redux)
@@ -34,13 +34,17 @@ import {
 import {
     ErrorComponent,
     ButtonModalComponent,
-    //Ng-bootstrap modals also need to be added in this file to "entryComponents"
+    // Ng-bootstrap modals also need to be added in this file to "entryComponents"
     SampleModalComponent
 } from 'app-components';
 
 // Shared services and elements
 import {
+    // Services
+    GlobalErrorHandler,
     AppState,
+    LoggingService,
+    // State management
     InternalStateType,
     StoreMainReducer,
     StoreMainEffects
@@ -51,8 +55,10 @@ import '../styles/styles.scss';
 
 // Application wide providers
 const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
-  AppState
+    ...APP_RESOLVER_PROVIDERS,
+    GlobalErrorHandler,
+    AppState,
+    LoggingService
 ];
 
 type StoreType = {
@@ -97,7 +103,11 @@ type StoreType = {
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
         APP_PROVIDERS,
-        Title
+        Title,
+        {
+            provide: ErrorHandler,
+            useClass: GlobalErrorHandler
+        }
     ], // Ng-bootstrap modals
     entryComponents: [ SampleModalComponent ]
 })

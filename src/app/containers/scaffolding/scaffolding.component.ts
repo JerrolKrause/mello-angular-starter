@@ -11,8 +11,8 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
 
     private ngUnsubscribe: Subject<void> = new Subject<void>(); // Holds observables to unsub from
     public users: any = [];
-    public isLoading: boolean = true;
-    public error: IErrorApi;
+    public usersWaiting: boolean = true;
+    public usersError: IErrorApi;
 
     constructor(
         private appState: AppState
@@ -25,11 +25,17 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
             .takeUntil(this.ngUnsubscribe) // Register for easy un-sub
             .subscribe(
                 users => this.users = users, // Get users
-                error => { error.errorMsg = 'Error getting users.'; console.log(error); this.error = error; }, // Errors
-                () => this.isLoading = false // End loading
+                error => { error.errorMsg = 'Error getting users.'; console.log(error); this.usersError = error; }, // Errors
+                () => this.usersWaiting = false // End loading
             );
     }
-    
+
+    public throwError() {
+        console.log('Throwing Error');
+        this.users = 'werwer';
+    }
+
+
     /**
      * Callback function for a successful modal close event. In this instance, adds the API response to the users array. This method is passed to the button modal component
      */

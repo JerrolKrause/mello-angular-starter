@@ -1,5 +1,7 @@
 ﻿//Typescript barrel
-export { AppState, InternalStateType } from './app.service';
+export * from './error.handler';
+export * from './app.service';
+export * from './logging.service';
 
 //Main store 
 export * from './stores/main/main.reducer';

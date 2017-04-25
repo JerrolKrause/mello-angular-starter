@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-6">
             <h2>API call with subscribe</h2>
-            <div *ngIf="isLoading && !error"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
-            <error *ngIf="error" [error]="error"></error>
+            <div *ngIf="usersWaiting && !usersError"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
+            <error *ngIf="usersError" [error]="usersError"></error>
             <ul *ngIf="users">
                 <li *ngFor="let user of users">{{user.name}}</li>
             </ul>
@@ -18,11 +18,11 @@
                 <button-modal modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">Add New User</button-modal>
             </p>
         </div>
-
     </div>
+
     <hr />
     <h2>Store Example</h2>
     <store-example></store-example>
     <hr />
-
+    <button class="btn btn-primary" (click)="throwError()">Throw Error</button>
 </div>
