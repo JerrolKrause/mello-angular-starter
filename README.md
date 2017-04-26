@@ -9,6 +9,14 @@ Includes the following additional elements:
 <li>Ngrx-Store (Redux)</li>
 </ul>
 
+Lots and lots of scaffolding/boilerplate for rapid development:
+<ul>
+<li>Fully e2e Ngrx-Store complete with REST API interaction</li>
+<li>Intelligent application exception/error handling and logging</li>
+<li>Intuitive flyout mobile nav (missing fron ng-bootstrap)</li>
+<li>Title service for SEO/bookmarking</li>
+<li>Boilerplate SCSS for common UI components</li>
+</ul>
 
 ```bash
 # clone our repo
