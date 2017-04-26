@@ -13,9 +13,12 @@
             </ul>
         </div>
         <div class="col-6">
-            <h2>Ng-Bootstrap modal</h2>
+            <h2>Ng-Bootstrap component modal</h2>
+            <p>Pass data to a component, emit event back.</p>
             <p>
-                <button-modal modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">Add New User</button-modal>
+                <button-modal classes="btn btn-primary" modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">
+                    <i class="fa fa-user-plus"></i> Add User
+                </button-modal>
             </p>
         </div>
     </div>
@@ -24,5 +27,4 @@
     <h2>Store Example</h2>
     <store-example></store-example>
     <hr />
-    <button class="btn btn-primary" (click)="throwError()">Throw Error</button>
 </div>

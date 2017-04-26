@@ -12,11 +12,15 @@
     <div class="col-6">
         <div class="alert alert-danger" *ngIf="store.errors.USERS_ADD"><i class="fa fa-alert"></i> Error adding user</div>
         <div class="alert alert-success" *ngIf="store.success.USERS_ADD"><i class="fa fa-alert"></i> Success adding user</div>
-        <p>
-            <input class="form-control" [(ngModel)]="user" placeholder="Some Dude" />
-        </p>
-        <p>
-            <button class="btn btn-primary" (click)="addUser()" [disabled]="store.waiting.USERS_ADD">Add User</button>
-        </p>
+        <form name="formAddUser" (ngSubmit)="addUser()">
+            <p>
+                <input name="user" class="form-control" [(ngModel)]="user" placeholder="Some Dude" />
+            </p>
+            <p>
+                <button class="btn btn-primary" type="submit" [disabled]="store.waiting.USERS_ADD" [ngClass]="{'btn-waiting':store.waiting.USERS_ADD}">
+                    <i class="fa fa-user-plus"></i> Add User
+                </button>
+            </p>
+        </form>
     </div>
 </div>

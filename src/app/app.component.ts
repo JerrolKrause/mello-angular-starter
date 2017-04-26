@@ -18,7 +18,6 @@ import 'rxjs/add/operator/mergeMap';
     <main>
       <router-outlet></router-outlet>
     </main>
-    <div class="alert alert-danger icon sticky-error" id="errorApp" style="display:none;"></div>
   `
 })
 export class AppComponent implements OnInit {

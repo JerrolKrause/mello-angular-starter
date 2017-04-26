@@ -20,7 +20,6 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit() {
-       
         this.appState.getMockUsers()
             .takeUntil(this.ngUnsubscribe) // Register for easy un-sub
             .subscribe(
@@ -29,13 +28,7 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
                 () => this.usersWaiting = false // End loading
             );
     }
-
-    public throwError() {
-        console.log('Throwing Error');
-        this.users = 'werwer';
-    }
-
-
+    
     /**
      * Callback function for a successful modal close event. In this instance, adds the API response to the users array. This method is passed to the button modal component
      */
