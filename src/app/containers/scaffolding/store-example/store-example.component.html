@@ -1,5 +1,5 @@
 <div class="row" *ngIf="storeMain$ | async as store">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <!-- Only 1 subscription to the observable
             Design pattern for how to handle loading API data from a store
         -->
@@ -9,7 +9,7 @@
             <li *ngFor="let user of store.users">{{user.name}}</li>
         </ul>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="alert alert-danger" *ngIf="store.errors.USERS_ADD"><i class="fa fa-alert"></i> Error adding user</div>
         <div class="alert alert-success" *ngIf="store.success.USERS_ADD"><i class="fa fa-alert"></i> Success adding user</div>
         <form name="formAddUser" (ngSubmit)="addUser()">

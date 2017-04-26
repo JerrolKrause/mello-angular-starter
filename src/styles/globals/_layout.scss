@@ -1,4 +1,8 @@
 ﻿.sticky-error{
     position:sticky;margin:1.5rem;bottom:20px;z-index:5;box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-    code{display:block;margin-top:3px;}
+    code{display:block;margin-top:3px;font-size: 0.75rem;}
+}
+
+.no-support{
+    @extend .alert-danger;padding:.5rem 0;position:absolute;top:0px;left:0px;right:0px;
 }

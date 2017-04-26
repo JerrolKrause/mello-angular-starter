@@ -1,7 +1,5 @@
 ﻿import { ErrorHandler, Injectable } from '@angular/core';
 
-declare var window: any;
-
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
 
@@ -13,6 +11,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     }
 
     // Custom error handler for application/angular errors
+    // Uses plain JS to eliminate any dependencies that may not be available due to the error
     public handleError(error) {
 
         // Create error message, limit to 600 characters and add current page location

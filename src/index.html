@@ -21,16 +21,18 @@
 </head>
 
 <body>
+    
+    <app>
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+    </app>
 
-  <app>
-    Loading...
-  </app>
+    <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
 
-  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
-
+    <noscript aria-hidden="true"><div class="no-support"><div class="container"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Please enable JavaScript to use this site.</div></div><style>body{padding-top: 2.5rem;}</style></noscript>
+    <!--[if lt IE 10]><div class="no-support"><div class="container"><span class="browsehappy"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to use this site.</span></div></div><style>body{padding-top: 2.5rem;}</style><![endif]-->
 
 </body>
 </html>

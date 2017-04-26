@@ -116,6 +116,7 @@
     <Content Include="src\styles\globals\_typography.scss" />
     <Content Include="src\styles\globals\_forms.scss" />
     <Content Include="src\styles\globals\_layout.scss" />
+    <Content Include="src\styles\components\_navbar.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
