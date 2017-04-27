@@ -8,4 +8,6 @@ export * from './home/home.component';
 export * from './no-content/no-content.component';
 
 export * from './scaffolding/scaffolding.component';
+export * from './scaffolding/rest-api/rest-api.component';
 export * from './scaffolding/store-example/store-example.component';
+export * from './scaffolding/forms/template/template-form.component';

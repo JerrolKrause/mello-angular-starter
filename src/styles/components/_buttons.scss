@@ -10,5 +10,5 @@
         .fa{display:none;}
         &:after{ font-family: FontAwesome;content: "\f110";@extend .fa-spin;display:inline-block;position:relative;left:-5px;}
     }
-
 }
+.input-group .btn, .input-group .btn:hover{box-shadow:none;transform:none;}

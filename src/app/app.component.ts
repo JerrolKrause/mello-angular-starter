@@ -14,11 +14,7 @@ import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  template: `
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  `
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent implements OnInit {
 

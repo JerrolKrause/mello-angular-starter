@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-12 col-md-6">
+        <div *ngIf="usersWaiting && !usersError"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
+        <error *ngIf="usersError" [error]="usersError"></error>
+        <ul *ngIf="users">
+            <li *ngFor="let user of users">{{user.name}}</li>
+        </ul>
+    </div>
+    <div class="col-12 col-md-6">
+        <h3>Ng-Bootstrap Modal Component</h3>
+        <p>Pass data to a component, emit event back. Uses univeral modal button.</p>
+        <p>
+            <button-modal classes="btn btn-primary" modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">
+                <i class="fa fa-user-plus"></i> Add User
+            </button-modal>
+        </p>
+    </div>
+</div>

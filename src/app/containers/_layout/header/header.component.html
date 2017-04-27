@@ -1,25 +1,27 @@
-<div class="bg-faded">
-    <div class="container">
-        <nav class="navbar navbar-toggleable-md navbar-light navbar-ngbootstrap">
+<header>
+    <div class="bg-faded">
+        <div class="container">
+            <nav class="navbar navbar-toggleable-md navbar-light navbar-ngbootstrap">
 
-            <button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation" (click)="isOpen = !isOpen">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation" (click)="isOpen = !isOpen">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <a class="navbar-brand" [routerLink]="['/']">AngularSeed</a>
-            <div class="collapse navbar-collapse" id="navbar-main" [ngClass]="{'open': isOpen }">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/scaffolding']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Scaffolding</a>
-                    </li>
-                    
-                </ul>
-                <div class="nav-mobile-bg" (click)="isOpen = !isOpen"></div>
-            </div>
+                <a class="navbar-brand" [routerLink]="['/']">AngularSeed</a>
+                <div class="collapse navbar-collapse" id="navbar-main" [ngClass]="{'open': isOpen }">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/scaffolding']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Scaffolding</a>
+                        </li>
 
-        </nav>
+                    </ul>
+                    <div class="nav-mobile-bg" (click)="isOpen = !isOpen"></div>
+                </div>
+
+            </nav>
+        </div>
     </div>
-</div>
+</header>

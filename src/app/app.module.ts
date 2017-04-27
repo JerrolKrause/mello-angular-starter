@@ -19,21 +19,27 @@ import { AppComponent } from './app.component'; // App is our top level componen
 
 // Containers/Routes
 import {
-    //Layout
+    // Layout
     LayoutMainComponent,
     HeaderComponent,
     FooterComponent,
-    //Routes
+    // Routes
     HomeComponent,
     NoContentComponent,
+
+    // Scaffolding, can be removed
     ScaffoldingComponent,
-    StoreExampleComponent
+    StoreExampleComponent,
+    RestApiComponent,
+    TemplateFormComponent
 } from 'app-containers';
 
 // Reusuable components
 import {
     ErrorComponent,
     ButtonModalComponent,
+
+    // Scaffolding, can be removed
     // Ng-bootstrap modals also need to be added in this file to "entryComponents"
     SampleModalComponent
 } from 'app-components';
@@ -50,7 +56,7 @@ import {
     StoreMainEffects
 } from 'app-shared';
 
-// Import master scss file
+// Application stylesheet. Import everything here
 import '../styles/styles.scss';
 
 // Application wide providers
@@ -80,14 +86,19 @@ type StoreType = {
         FooterComponent,
         HomeComponent,
         NoContentComponent,
-        ScaffoldingComponent,
+
         // Components
         ErrorComponent,
-        StoreExampleComponent,
         ButtonModalComponent,
+
+        //Scaffolding, can be removed
+        ScaffoldingComponent,
+        RestApiComponent,
+        TemplateFormComponent,
+        StoreExampleComponent,
         SampleModalComponent
-  ],
-  // import Angular's modules
+    ],
+    // import Angular's modules
     imports: [ 
         BrowserModule,
         FormsModule,
@@ -99,7 +110,7 @@ type StoreType = {
         EffectsModule.run(StoreMainEffects),
         // Bootstrap
         NgbModule.forRoot()
-  ],
+    ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
         APP_PROVIDERS,
@@ -109,7 +120,10 @@ type StoreType = {
             useClass: GlobalErrorHandler
         }
     ], // Ng-bootstrap modals
-    entryComponents: [ SampleModalComponent ]
+    entryComponents: [
+        //Scaffolding, can be removed
+        SampleModalComponent
+    ]
 })
 export class AppModule {
 

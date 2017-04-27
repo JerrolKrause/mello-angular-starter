@@ -1,4 +1,9 @@
-﻿@include media-breakpoint-down(md){
+﻿header{
+    .navbar{margin-bottom:1rem;}
+}
+
+
+@include media-breakpoint-down(md){
     .navbar-ngbootstrap{
 
         .collapse{display:block;}
@@ -9,9 +14,6 @@
              .navbar-nav{ left: 0px;@include transition();box-shadow:5px 0px 40px rgba(0, 0, 0, .5);}
              .nav-mobile-bg{position:fixed;@include transition();z-index:998;opacity:1;@include transition();}
         }
-
-
-
 
     }
 }

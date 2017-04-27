@@ -45,6 +45,8 @@
     <Content Include="src\app\components\modals\sample\sample-modal.component.html" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
+    <Content Include="src\app\containers\scaffolding\forms\template\template-form.component.html" />
+    <Content Include="src\app\containers\scaffolding\rest-api\rest-api.component.html" />
     <Content Include="src\app\containers\scaffolding\scaffolding.component.html" />
     <Content Include="src\app\containers\scaffolding\store-example\store-example.component.html" />
     <Content Include="src\app\containers\_layout\footer\footer.component.html" />
@@ -117,6 +119,8 @@
     <Content Include="src\styles\globals\_forms.scss" />
     <Content Include="src\styles\globals\_layout.scss" />
     <Content Include="src\styles\components\_navbar.scss" />
+    <Content Include="src\styles\components\_cards.scss" />
+    <Content Include="src\styles\components\_tabs.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -134,6 +138,8 @@
     <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\error\error.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\scaffolding\forms\template\template-form.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\scaffolding\rest-api\rest-api.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\scaffolding.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\store-example\store-example.component.ts" />
     <TypeScriptCompile Include="src\app\containers\_layout\footer\footer.component.ts" />

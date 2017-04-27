@@ -1,30 +1,65 @@
 <div class="container">
-    <h1>Scaffolding Page</h1>
+    <h1>Scaffolding &amp; Boilerplate</h1>
     <p>Contains lots of helpful code snippets for rapid development.</p>
     <hr />
 
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <h2>API call with subscribe</h2>
-            <div *ngIf="usersWaiting && !usersError"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
-            <error *ngIf="usersError" [error]="usersError"></error>
-            <ul *ngIf="users">
-                <li *ngFor="let user of users">{{user.name}}</li>
-            </ul>
-        </div>
-        <div class="col-12 col-md-6">
-            <h2>Ng-Bootstrap component modal</h2>
-            <p>Pass data to a component, emit event back.</p>
-            <p>
-                <button-modal classes="btn btn-primary" modal="SampleModalComponent" [data]="users" (onSuccess)="doCoolStuff($event)">
-                    <i class="fa fa-user-plus"></i> Add User
-                </button-modal>
-            </p>
-        </div>
-    </div>
-
-    <hr />
-    <h2>Store Example</h2>
-    <store-example></store-example>
-    <hr />
+    <ngb-tabset>
+        <ngb-tab>
+            <template ngbTabTitle>
+                REST API
+            </template>
+            <template ngbTabContent>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>REST API Interaction</h3>
+                    </div>
+                    <div class="card-block">
+                        <rest-api></rest-api>
+                    </div>
+                </div>
+                
+            </template>
+        </ngb-tab>
+        <ngb-tab>
+            <template ngbTabTitle>
+                Ngrx-Store
+            </template>
+            <template ngbTabContent>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Ngrx-Store with Effects</h3>
+                    </div>
+                    <div class="card-block">
+                        <store-example></store-example>
+                    </div>
+                </div>
+            </template>
+        </ngb-tab>
+        <ngb-tab>
+            <template ngbTabTitle>
+                Forms
+            </template>
+            <template ngbTabContent>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Forms</h3>
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <h3>Template Driven</h3>
+                                <hr />
+                                <template-form></template-form>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <h3>Reactive</h3>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </ngb-tab>
+    </ngb-tabset>
+       
 </div>

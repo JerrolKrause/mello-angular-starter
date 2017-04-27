@@ -11,10 +11,11 @@ Includes the following additional elements:
 
 Lots and lots of scaffolding/boilerplate for rapid development:
 <ul>
-<li>Fully e2e Ngrx-Store complete with REST API interaction</li>
+<li>REST API with complete state management (with loading/success/error)</li>
+<li>Fully e2e Ngrx-Store with effects for API interaction</li>
 <li>Intelligent application exception/error handling and logging</li>
 <li>Intuitive flyout mobile nav (missing fron ng-bootstrap)</li>
-<li>Title service for SEO/bookmarking</li>
+<li>Title service for SEO & bookmarking</li>
 <li>Boilerplate SCSS for common UI components</li>
 </ul>
 
