@@ -31,7 +31,8 @@ import {
     ScaffoldingComponent,
     StoreExampleComponent,
     RestApiComponent,
-    TemplateFormComponent
+    TemplateFormComponent,
+    ReactiveFormComponent
 } from 'app-containers';
 
 // Reusuable components
@@ -95,6 +96,7 @@ type StoreType = {
         ScaffoldingComponent,
         RestApiComponent,
         TemplateFormComponent,
+        ReactiveFormComponent,
         StoreExampleComponent,
         SampleModalComponent
     ],

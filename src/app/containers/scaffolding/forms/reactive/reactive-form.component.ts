@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'template-form',  // <scaffolding></scaffolding>
-  templateUrl: './template-form.component.html'
+  selector: 'reactive-form',  // <scaffolding></scaffolding>
+  templateUrl: './reactive-form.component.html'
 })
-export class TemplateFormComponent implements OnInit{
+export class ReactiveFormComponent implements OnInit{
 
     public form: any = {};
     public showPassword: boolean = false;
