@@ -27,8 +27,11 @@ git clone --depth 1 https://github.com/JerrolKrause/angular-seed-complete.git
 # change directory to our repo
 cd angular-seed-complete
 
-# install the repo with npm
-npm install
+# install the repo with yarn
+yarn
+
+# If you don't have yarn installed, install it via npm first (lol)
+npm install --global yarn
 
 # use Hot Module Replacement
 npm run server:dev:hmr

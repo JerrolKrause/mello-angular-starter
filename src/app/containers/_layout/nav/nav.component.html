@@ -1,0 +1,21 @@
+<button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation" (click)="isOpen = !isOpen">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbar-main" [ngClass]="{'open': isOpen }">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/scaffolding']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Scaffolding</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+        </li>
+    </ul>
+    <span class="form-inline my-2 my-lg-0 hidden-md-down">
+        <i class="fa fa-user mr-1"></i> Jerrol Krause 
+    </span>
+    <div class="nav-mobile-bg" (click)="isOpen = !isOpen"></div>
+</div>

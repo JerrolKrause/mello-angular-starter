@@ -5,8 +5,6 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-//import { GlobalErrorHandler } from 'app-shared';
-
 /*
  * App Component
  * Top Level Component
@@ -24,7 +22,6 @@ export class AppComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private title: Title,
-        //private globalErrorHandler: GlobalErrorHandler
     ) {}
 
     public ngOnInit() {
@@ -39,20 +36,6 @@ export class AppComponent implements OnInit {
             .filter(route => route.outlet === 'primary')
             .mergeMap(route => route.data)
             .subscribe((event) => this.title.setTitle(event['title']));
-
-        /*
-        this.globalErrorHandler.error$.subscribe(
-            error => {
-                console.log('Passed error to app component', error);
-                this.errorApp = error
-            },
-            stuff => {
-                console.log('Error getting error', stuff);
-            }
-        );
-        */
-        
-
     }
 
 

@@ -1,0 +1,68 @@
+<header-component></header-component>
+<div class="container">
+  
+    <div class="row">
+        <div class="col col-12 col-lg-6 push-lg-3">
+            <h1><i class="fa fa-user"></i> Login</h1>
+
+            <div class="card">
+                <form #templateForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="card-block">
+
+                        <h4>Enter your login and password</h4>
+
+                        <div class="form-group row" [ngClass]="{'has-danger' : email.invalid && email.dirty && email.touched, 'has-success' : email.valid }">
+                            <label for="email" class="col-12 col-md-3 col-form-label">Email Address</label>
+                            <div class="col-12 col-md-9">
+                                <input [(ngModel)]="form.email" [ngClass]="{'form-control-danger' : email.invalid && email.dirty && email.touched, 'form-control-success' : email.valid }"
+                                       required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                       #email="ngModel" id="email" name="email" class="form-control" type="email" />
+                                <div *ngIf="email.errors && email.dirty && email.touched"
+                                     class="alert alert-danger alert-form">
+                                    <div [hidden]="!email.errors.required">
+                                        Email Address is required
+                                    </div>
+                                    <div [hidden]="!email.errors.pattern">
+                                        Email Address is invalid
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" [ngClass]="{'has-danger' : lname.invalid && lname.dirty && lname.touched, 'has-success' : lname.valid }">
+                            <label for="lname" class="col-12 col-md-3 col-form-label">Password</label>
+                            <div class="col-12 col-md-9">
+                                <div class="input-group">
+                                    <input [(ngModel)]="form.lastname" [ngClass]="{'form-control-danger' : lname.invalid && lname.dirty && lname.touched, 'form-control-success' : lname.valid }"
+                                           required minlength="6"
+                                           #lname="ngModel" id="lname" name="lname" class="form-control" [attr.type]="!showPassword ? 'password' : 'text'" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary" type="button" (click)="showPassword = !showPassword">
+                                            <span *ngIf="!showPassword"><i class="fa fa-eye"></i> <small>Show Password</small></span>
+                                            <span *ngIf="showPassword"><i class="fa fa-eye-slash"></i> <small>Hide Password</small></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div *ngIf="lname.errors && lname.dirty && lname.touched"
+                                     class="alert alert-danger alert-form">
+                                    <div [hidden]="!lname.errors.required">
+                                        Password is required
+                                    </div>
+                                    <div [hidden]="!lname.errors.minlength">
+                                        Password must be at least 6 characters long.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-primary" [disabled]="templateForm.invalid">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer-component></footer-component>

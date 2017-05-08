@@ -21,11 +21,14 @@ import { AppComponent } from './app.component'; // App is our top level componen
 import {
     // Layout
     LayoutMainComponent,
+    LayoutSingleComponent,
     HeaderComponent,
+    NavComponent,
     FooterComponent,
     // Routes
     HomeComponent,
     NoContentComponent,
+    LoginComponent,
 
     // Scaffolding, can be removed
     ScaffoldingComponent,
@@ -83,10 +86,13 @@ type StoreType = {
         AppComponent,
         // Containers
         LayoutMainComponent,
+        LayoutSingleComponent,
         HeaderComponent,
+        NavComponent,
         FooterComponent,
         HomeComponent,
         NoContentComponent,
+        LoginComponent,
 
         // Components
         ErrorComponent,
@@ -121,7 +127,8 @@ type StoreType = {
         {
             provide: ErrorHandler,
             useClass: GlobalErrorHandler
-        }
+        },
+        LoggingService 
     ], // Ng-bootstrap modals
     entryComponents: [
         //Scaffolding, can be removed
@@ -130,10 +137,11 @@ type StoreType = {
 })
 export class AppModule {
 
-  constructor(
-    public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
+    constructor(
+        public appRef: ApplicationRef,
+        public appState: AppState,
+        public loggingService: LoggingService
+    ) {}
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {

@@ -45,6 +45,7 @@
     <Content Include="src\app\components\modals\sample\sample-modal.component.html" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
+    <Content Include="src\app\containers\login\login.component.html" />
     <Content Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.html" />
     <Content Include="src\app\containers\scaffolding\forms\template\template-form.component.html" />
     <Content Include="src\app\containers\scaffolding\rest-api\rest-api.component.html" />
@@ -53,6 +54,8 @@
     <Content Include="src\app\containers\_layout\footer\footer.component.html" />
     <Content Include="src\app\containers\_layout\header\header.component.html" />
     <Content Include="src\app\containers\_layout\main\layout-main.component.html" />
+    <Content Include="src\app\containers\_layout\nav\nav.component.html" />
+    <Content Include="src\app\containers\_layout\single\layout-single.component.html" />
     <Content Include="src\assets\humans.txt" />
     <Content Include="src\assets\icon\android-icon-144x144.png" />
     <Content Include="src\assets\icon\android-icon-192x192.png" />
@@ -122,12 +125,14 @@
     <Content Include="src\styles\components\_navbar.scss" />
     <Content Include="src\styles\components\_cards.scss" />
     <Content Include="src\styles\components\_tabs.scss" />
+    <Content Include=".tfignore" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+    <Content Include="yarn.lock" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
@@ -139,6 +144,7 @@
     <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\error\error.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\template\template-form.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\rest-api\rest-api.component.ts" />
@@ -147,6 +153,8 @@
     <TypeScriptCompile Include="src\app\containers\_layout\footer\footer.component.ts" />
     <TypeScriptCompile Include="src\app\containers\_layout\header\header.component.ts" />
     <TypeScriptCompile Include="src\app\containers\_layout\main\layout-main.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\_layout\nav\nav.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\_layout\single\layout-single.component.ts" />
     <TypeScriptCompile Include="src\app\shared\app.service.ts" />
     <TypeScriptCompile Include="src\app\components\index.ts" />
     <TypeScriptCompile Include="src\app\containers\index.ts" />
