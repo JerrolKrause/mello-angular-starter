@@ -1,0 +1,76 @@
+﻿<div class="form-group row" [formGroup]="parentFormGroup"
+     [ngClass]="{
+     'has-danger' : parentFormGroup.get(id).invalid && parentFormGroup.get(id).dirty && parentFormGroup.get(id).touched,
+     'has-success' : parentFormGroup.get(id).valid && parentFormGroup.get(id).validator }">
+    <label for="frm_{{id}}" class="col-12 col-md-3 col-form-label">
+        {{label}} <sup class="red" *ngIf="parentFormGroup.get(id).validator">*</sup>
+    </label>
+    <div class="col-12 col-md-9">
+        <ng-container [ngSwitch]="type">
+            <!-- Select Dropdown -->
+            <select class="form-control" id="frm_{{id}}" [formControlName]="id"
+                    *ngSwitchCase="'select'" [ngClass]="{
+               'form-control-danger' : parentFormGroup.get(id).invalid && parentFormGroup.get(id).dirty && parentFormGroup.get(id).touched,
+               'form-control-success' : parentFormGroup.get(id).valid && parentFormGroup.get(id).validator }">
+                <option *ngFor="let item of model" [value]="item">{{item}}</option>
+            </select>
+
+            <!-- Radio Buttons -->
+            <fieldset class="form-group" *ngSwitchCase="'radio'">
+                <div class="form-check" *ngFor="let item of model">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" [value]="item" [formControlName]="id">
+                        {{item}}
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Checkboxes -->
+            <fieldset class="form-group" *ngSwitchCase="'checkbox'">
+                <div class="form-check" *ngFor="let item of model">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [value]="item" [formControlName]="id" (change)="test()">
+                        {{item}}
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Text Area -->
+            <textarea class="form-control" id="frm_{{id}}" [formControlName]="id" rows="4"
+                      *ngSwitchCase="'textarea'" [ngClass]="{
+               'form-control-danger' : parentFormGroup.get(id).invalid && parentFormGroup.get(id).dirty && parentFormGroup.get(id).touched,
+               'form-control-success' : parentFormGroup.get(id).valid && parentFormGroup.get(id).validator }"></textarea>
+
+
+            <!-- Default input text box -->
+            <input class="form-control" id="frm_{{id}}" [formControlName]="id" [type]="type"
+                   *ngSwitchDefault [ngClass]="{
+               'form-control-danger' : parentFormGroup.get(id).invalid && parentFormGroup.get(id).dirty && parentFormGroup.get(id).touched,
+               'form-control-success' : parentFormGroup.get(id).valid && parentFormGroup.get(id).validator }" />
+
+        </ng-container>
+
+
+        <div *ngIf="parentFormGroup.get(id).errors && parentFormGroup.get(id).dirty && parentFormGroup.get(id).touched"
+             class="alert alert-danger alert-form icon">
+            <span [hidden]="!parentFormGroup.get(id).errors.required">
+                {{label}} is required.
+            </span>
+            <span [hidden]="!parentFormGroup.get(id).errors.minlength" *ngIf="parentFormGroup.get(id).errors.minlength">
+                {{label}} must be at least {{parentFormGroup.get(id).errors.minlength.requiredLength || 0}} characters long.
+            </span>
+            <span [hidden]="!parentFormGroup.get(id).errors.email">
+                Please enter a valid email address.
+            </span>
+            <span [hidden]="!parentFormGroup.get(id).errors.pattern">
+                Please enter a valid {{label}}.
+            </span>
+
+        </div>
+        <!--
+        <code>
+            {{parentFormGroup.get(id).errors | json}}
+        </code>
+        -->
+    </div>
+</div>

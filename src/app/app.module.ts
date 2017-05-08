@@ -30,6 +30,7 @@ import {
     NoContentComponent,
     LoginComponent,
 
+
     // Scaffolding, can be removed
     ScaffoldingComponent,
     StoreExampleComponent,
@@ -42,6 +43,8 @@ import {
 import {
     ErrorComponent,
     ButtonModalComponent,
+
+    InputComponent,
 
     // Scaffolding, can be removed
     // Ng-bootstrap modals also need to be added in this file to "entryComponents"
@@ -97,6 +100,7 @@ type StoreType = {
         // Components
         ErrorComponent,
         ButtonModalComponent,
+        InputComponent,
 
         //Scaffolding, can be removed
         ScaffoldingComponent,

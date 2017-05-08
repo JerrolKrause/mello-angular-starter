@@ -1,4 +1,14 @@
-﻿
+﻿// Main ng-bootstrap accordion
+ngb-accordion{
+    .card-header{
+        padding:0;font-size: 1.15rem; font-weight: bold;
+        & > a{
+            display:block;padding: 0.75rem 1.25rem;
+            &:before{font-family: FontAwesome;margin-right:7px;content: "\f0da";@include transition();display:inline-block;}
+        }
+        &.active > a:before{transform: rotate(90deg);@include transition(.1);}
+    }
+}
 
 .accordion-inline{
     .card{background: transparent;border: 0; padding: 0;}

@@ -2,21 +2,21 @@ An Angular Seed/Starter based on the excellent https://github.com/AngularClass/a
 
 Includes the following additional elements:
 <ul>
-<li>Angular 4</li>
-<li>TypeScript 2 barrels/paths</li>
-<li>Bootstrap 4</li>
-<li>Ng-Boostrap</li>
-<li>Ngrx-Store (Redux)</li>
+	<li>Angular 4</li>
+	<li>TypeScript 2 barrels/paths</li>
+	<li>Bootstrap 4</li>
+	<li>Ng-Boostrap</li>
+	<li>Ngrx-Store (Redux)</li>
 </ul>
 
 Lots and lots of scaffolding/boilerplate for rapid development:
 <ul>
-<li>REST API with complete state management (with loading/success/error)</li>
-<li>Fully e2e Ngrx-Store with effects for API interaction</li>
-<li>Intelligent application exception/error handling and logging</li>
-<li>Intuitive flyout mobile nav (missing fron ng-bootstrap)</li>
-<li>Title service for SEO & bookmarking</li>
-<li>Boilerplate SCSS for common UI components</li>
+	<li>REST API with complete state management (with loading/success/error)</li>
+	<li>Fully e2e Ngrx-Store with effects for API interaction</li>
+	<li>Intelligent application exception/error handling and logging</li>
+	<li>Intuitive flyout mobile nav (missing fron ng-bootstrap)</li>
+	<li>Title service for SEO & bookmarking</li>
+	<li>Boilerplate SCSS for common UI components</li>
 </ul>
 
 ```bash
@@ -32,13 +32,18 @@ yarn
 
 # If you don't have yarn installed, install it via npm first (lol)
 npm install --global yarn
-
-# use Hot Module Replacement
-npm run server:dev:hmr
-
 ```
+
+```bash
+# Dev server with HMR
+npm run server:dev:hmr
+```
+
 
 ```bash
 # Build with:
 npm run build:aot
+
+# Serve prod build with:
+npm run server:prod
 ```
