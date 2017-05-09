@@ -42,7 +42,7 @@
     <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\components\error\error.component.html" />
-    <Content Include="src\app\components\forms\input\input.component.html" />
+    <Content Include="src\app\components\forms\field\field.component.html" />
     <Content Include="src\app\components\modals\sample\sample-modal.component.html" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
@@ -144,7 +144,7 @@
     <TypeScriptCompile Include="src\app\app.routes.ts" />
     <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\error\error.component.ts" />
-    <TypeScriptCompile Include="src\app\components\forms\input\input.component.ts" />
+    <TypeScriptCompile Include="src\app\components\forms\field\field.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.ts" />

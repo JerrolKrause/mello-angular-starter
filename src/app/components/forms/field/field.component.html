@@ -1,0 +1,78 @@
+﻿<div class="form-group row" [formGroup]="frmGroup"
+     [ngClass]="{
+     'has-danger' : field.invalid && field.dirty && field.touched,
+     'has-success' : field.valid && field.validator }">
+    <label for="frm_{{frmControl}}" class="col-12 col-md-3 col-form-label">
+        {{label}} <sup class="red" *ngIf="field.validator">*</sup>
+    </label>
+    <div class="col-12 col-md-9">
+        <ng-container [ngSwitch]="type">
+
+            <!-- Select Dropdown -->
+            <select class="form-control" id="frm_{{frmControl}}" [formControlName]="frmControl"
+                    *ngSwitchCase="'select'" [ngClass]="{
+               'form-control-danger' : field.invalid && field.dirty && field.touched,
+               'form-control-success' : field.valid && field.validator }">
+                <option disabled selected value="">-- Please Select --</option>
+                <option *ngFor="let item of model" [value]="item[modelLabel] || item">{{item[modelLabel] || item}}</option>
+            </select>
+
+            <!-- Radio Buttons -->
+            <fieldset class="form-group" *ngSwitchCase="'radio'">
+                <div class="form-check" *ngFor="let item of model">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" [value]="item[modelLabel] || item" [formControlName]="frmControl" [checked]="field.value == (item[modelLabel] || item)">
+                        {{item[modelLabel] || item}}
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Checkboxes -->
+            <fieldset class="form-group" *ngSwitchCase="'checkbox'" formGroupName="{{frmControl}}">
+                <div class="form-check" *ngFor="let item of model; let i = index">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" [value]="item[modelLabel] || item"  [formControlName]="item.id || frmControl">
+                        {{item[modelLabel] || item}}
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Text Area -->
+            <textarea class="form-control" id="frm_{{frmControl}}" [formControlName]="frmControl" rows="4"
+                      *ngSwitchCase="'textarea'" [ngClass]="{
+               'form-control-danger' : field.invalid && field.dirty && field.touched,
+               'form-control-success' : field.valid && field.validator }">
+                {{placeholder}}
+            </textarea>
+
+            <!-- Default input text box -->
+            <input class="form-control" id="frm_{{frmControl}}" [formControlName]="frmControl" [type]="type" [placeholder]="placeholder"
+                   *ngSwitchDefault [ngClass]="{
+               'form-control-danger' : field.invalid && field.dirty && field.touched,
+               'form-control-success' : field.valid && field.validator }" />
+
+        </ng-container>
+
+        <div *ngIf="field.errors && field.dirty && field.touched"
+             class="alert alert-danger alert-form icon">
+            <span [hidden]="!field.errors.required">
+                {{label}} is required.
+            </span>
+            <span [hidden]="!field.errors.minlength" *ngIf="field.errors.minlength">
+                {{label}} must be at least {{field.errors.minlength.requiredLength || 0}} characters long.
+            </span>
+            <span [hidden]="!field.errors.email">
+                Please enter a valid email address.
+            </span>
+            <span [hidden]="!field.errors.pattern">
+                Please enter a valid {{label}}.
+            </span>
+
+        </div>
+        <!--
+        <code>
+            {{field.errors | json}}
+        </code>
+        -->
+    </div>
+</div>

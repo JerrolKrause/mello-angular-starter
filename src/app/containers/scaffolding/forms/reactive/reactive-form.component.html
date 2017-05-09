@@ -1,21 +1,21 @@
 <form [formGroup]="formMain" novalidate (ngSubmit)="onSubmit()">
     <h3>Form Components</h3>
-
-    <input-component [parentFormGroup]="formMain" id="name" label="Name"></input-component>
-    <input-component [parentFormGroup]="formMain" id="email" label="Email" type="email"></input-component>
-    <input-component [parentFormGroup]="formMain" id="password" label="Password" type="password"></input-component>
-    <!-- Nested form group example -->
-    <input-component [parentFormGroup]="formMain.controls.address" id="street" label="Street"></input-component>
-    <input-component [parentFormGroup]="formMain.controls.address" id="city" label="City"></input-component>
-    <input-component [parentFormGroup]="formMain.controls.address" id="state" label="State" type="select" [model]="states"></input-component> <!-- Select box example -->
     
+    <field-component [frmGroup]="formMain" frmControl="name" label="Name"></field-component>
+    <field-component [frmGroup]="formMain" frmControl="email" label="Email" type="email" placeholder="eat@joes.com"></field-component>
+    <field-component [frmGroup]="formMain" frmControl="password" label="Password" type="password"></field-component>
 
+    <!-- Nested form group example -->
+    <field-component [frmGroup]="formMain.controls.address" frmControl="street" label="Street"></field-component>
+    <field-component [frmGroup]="formMain.controls.address" frmControl="city" label="City"></field-component>
+    <field-component [frmGroup]="formMain.controls.address" frmControl="state" label="State" type="select" [model]="states"></field-component> <!-- Select box example -->
+    
+    <field-component [frmGroup]="formMain.controls.address" frmControl="zip" label="Zip" type="number"></field-component>
+    <field-component [frmGroup]="formMain" frmControl="message" label="Message" type="textarea"></field-component>
 
-    <input-component [parentFormGroup]="formMain.controls.address" id="zip" label="Zip" type="number"></input-component>
-    <input-component [parentFormGroup]="formMain" id="message" label="Message" type="textarea"></input-component>
-
-    <input-component [parentFormGroup]="formMain" id="colors" label="Colors" type="radio" [model]="colors"></input-component> <!-- Select box example -->
-    <input-component [parentFormGroup]="formMain" id="pets" label="Pets" type="checkbox" [model]="pets"></input-component> <!-- Select box example -->
+    <field-component [frmGroup]="formMain" frmControl="colors" label="Colors" type="radio" [model]="colors"></field-component><!--  Radio buttons  -->
+    <field-component [frmGroup]="formMain" frmControl="days" label="Days" type="checkbox" [model]="daysModel" modelLabel="name"></field-component>
+       
 
     <div class="form-group row">
         <div class="col-12 col-md-6">

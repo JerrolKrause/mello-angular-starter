@@ -6,4 +6,4 @@ export * from './modals/sample/sample-modal.component';
 export * from './buttons/button-modal.component';
 
 //Form elements
-export * from './forms/input/input.component';
+export * from './forms/field/field.component';
