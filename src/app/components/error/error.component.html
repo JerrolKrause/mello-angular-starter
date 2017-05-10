@@ -5,10 +5,10 @@
 
     <ngb-accordion #acc="ngbAccordion" class="accordion-inline">
         <ngb-panel>
-            <template ngbPanelTitle>
+            <ng-template ngbPanelTitle>
                 <span>See error details:</span>
-            </template>
-            <template ngbPanelContent>
+            </ng-template>
+            <ng-template ngbPanelContent>
                 <table class="table table-sm">
                     <tbody>
                         <tr *ngFor="let key of errorOfKeys">
@@ -17,7 +17,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </template>
+            </ng-template>
         </ngb-panel>
     </ngb-accordion>
 

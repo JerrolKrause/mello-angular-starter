@@ -5,6 +5,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+import { AuthService } from 'app-shared';
+
 /*
  * App Component
  * Top Level Component
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private title: Title,
+        private authService: AuthService
     ) {}
 
     public ngOnInit() {
@@ -30,6 +33,7 @@ export class AppComponent implements OnInit {
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
             .map(route => {
+                this.authService.refreshToken(); // On Route change, refresh authentication token
                 while (route.firstChild) route = route.firstChild;
                 return route;
             })

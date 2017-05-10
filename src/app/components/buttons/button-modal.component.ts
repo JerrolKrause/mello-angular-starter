@@ -35,10 +35,10 @@ export class ButtonModalComponent implements OnInit {
     * Open a modal window
     * Attach a success function and pass any relevant data to the modal component
     */
-    openModal() {
+    public openModal() {
         let modalToOpen = this.modalsList[this.modal];
 
-        let options = { size: this.size }
+        let options = { size: this.size };
 
         // Store reference to the modal instance
         let modalRef = this.modalService.open(modalToOpen, options);

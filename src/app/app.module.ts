@@ -30,7 +30,6 @@ import {
     NoContentComponent,
     LoginComponent,
 
-
     // Scaffolding, can be removed
     ScaffoldingComponent,
     StoreExampleComponent,
@@ -43,12 +42,12 @@ import {
 import {
     ErrorComponent,
     ButtonModalComponent,
-
     FieldComponent,
 
     // Scaffolding, can be removed
     // Ng-bootstrap modals also need to be added in this file to "entryComponents"
-    SampleModalComponent
+    SampleModalComponent,
+    LogoutModalComponent
 } from 'app-components';
 
 // Shared services and elements
@@ -57,6 +56,9 @@ import {
     GlobalErrorHandler,
     AppState,
     LoggingService,
+    AuthService,
+    AuthGuard,
+
     // State management
     InternalStateType,
     StoreMainReducer,
@@ -71,7 +73,9 @@ const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     GlobalErrorHandler,
     AppState,
-    LoggingService
+    LoggingService,
+    AuthService,
+    AuthGuard
 ];
 
 type StoreType = {
@@ -108,7 +112,8 @@ type StoreType = {
         TemplateFormComponent,
         ReactiveFormComponent,
         StoreExampleComponent,
-        SampleModalComponent
+        SampleModalComponent,
+        LogoutModalComponent
     ],
     // import Angular's modules
     imports: [ 
@@ -117,7 +122,6 @@ type StoreType = {
         ReactiveFormsModule,
         HttpModule,
         RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-        // NgRx
         // Add ngrx reducers here, works just like a normal dependency injection in a constructor
         StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// Inject stores here
         EffectsModule.run(StoreMainEffects),
@@ -132,11 +136,12 @@ type StoreType = {
             provide: ErrorHandler,
             useClass: GlobalErrorHandler
         },
-        LoggingService 
+        LoggingService,
+        AuthService,
+        AuthGuard
     ], // Ng-bootstrap modals
     entryComponents: [
-        //Scaffolding, can be removed
-        SampleModalComponent
+        SampleModalComponent, LogoutModalComponent
     ]
 })
 export class AppModule {
@@ -144,6 +149,7 @@ export class AppModule {
     constructor(
         public appRef: ApplicationRef,
         public appState: AppState,
+        public authService: AuthService,
         public loggingService: LoggingService
     ) {}
 

@@ -65,7 +65,6 @@ export class ReactiveFormComponent implements OnInit, OnChanges{
             })
         });
 
-
         console.log(this.formMain);
 
         // Reset form

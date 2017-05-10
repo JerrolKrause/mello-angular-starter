@@ -43,6 +43,7 @@
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\components\error\error.component.html" />
     <Content Include="src\app\components\forms\field\field.component.html" />
+    <Content Include="src\app\components\modals\logout\logout-modal.component.html" />
     <Content Include="src\app\components\modals\sample\sample-modal.component.html" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
@@ -127,6 +128,8 @@
     <Content Include="src\styles\components\_cards.scss" />
     <Content Include="src\styles\components\_tabs.scss" />
     <Content Include=".tfignore" />
+    <Content Include="src\assets\mock-data\login.json" />
+    <Content Include="src\assets\mock-data\refreshtoken.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -145,6 +148,7 @@
     <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\error\error.component.ts" />
     <TypeScriptCompile Include="src\app\components\forms\field\field.component.ts" />
+    <TypeScriptCompile Include="src\app\components\modals\logout\logout-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.ts" />
@@ -166,8 +170,10 @@
     <TypeScriptCompile Include="src\app\containers\home\home.e2e.ts" />
     <TypeScriptCompile Include="src\app\index.ts" />
     <TypeScriptCompile Include="src\app\containers\no-content\no-content.component.ts" />
+    <TypeScriptCompile Include="src\app\shared\auth.service.ts" />
     <TypeScriptCompile Include="src\app\shared\error.handler.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\interceptors\auth-guard.service.ts" />
     <TypeScriptCompile Include="src\app\shared\logging.service.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.actions.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.effects.ts" />
