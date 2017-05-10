@@ -1,4 +1,5 @@
-An Angular Seed/Starter based on the excellent https://github.com/AngularClass/angular2-webpack-starter
+An Angular Seed/Starter based on the excellent https://github.com/AngularClass/angular2-webpack-starter. 
+This repo's main purpose to kickstart loanDepot webapps with our main technology stack.
 
 Includes the following additional elements:
 <ul>
@@ -13,6 +14,7 @@ Lots and lots of scaffolding/boilerplate for rapid development:
 <ul>
 	<li>REST API with complete state management (with loading/success/error)</li>
 	<li>Fully e2e Ngrx-Store with effects for API interaction</li>
+	<li>Standard webapp security elements: token authentication and http interceptors</li>
 	<li>Intelligent application exception/error handling and logging</li>
 	<li>Intuitive flyout mobile nav (missing fron ng-bootstrap)</li>
 	<li>Title service for SEO & bookmarking</li>
