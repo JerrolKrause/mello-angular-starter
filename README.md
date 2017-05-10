@@ -47,3 +47,13 @@ npm run build:aot
 # Serve prod build with:
 npm run server:prod
 ```
+
+
+
+```bash
+# Useful Utilities:
+# Update package.json to latest version
+npm-check-updates -u
+yarn
+
+```
