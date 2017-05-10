@@ -1,6 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { NgModule, ApplicationRef, ErrorHandler } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
@@ -44,10 +44,11 @@ import {
     ButtonModalComponent,
     FieldComponent,
 
-    // Scaffolding, can be removed
     // Ng-bootstrap modals also need to be added in this file to "entryComponents"
-    SampleModalComponent,
-    LogoutModalComponent
+    LogoutModalComponent,
+
+    // Scaffolding, can be removed
+    SampleModalComponent
 } from 'app-components';
 
 // Shared services and elements
@@ -57,7 +58,10 @@ import {
     AppState,
     LoggingService,
     AuthService,
+
+    // Interceptors
     AuthGuard,
+    HttpInterceptor,
 
     // State management
     InternalStateType,
@@ -75,7 +79,8 @@ const APP_PROVIDERS = [
     AppState,
     LoggingService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    HttpInterceptor
 ];
 
 type StoreType = {
@@ -132,16 +137,19 @@ type StoreType = {
         ENV_PROVIDERS,
         APP_PROVIDERS,
         Title,
-        {
+        {// Global exception handler
             provide: ErrorHandler,
             useClass: GlobalErrorHandler
         },
-        LoggingService,
-        AuthService,
-        AuthGuard
+        {
+            provide: Http,
+            useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => new HttpInterceptor(xhrBackend, requestOptions), deps: [XHRBackend, RequestOptions]
+        }
     ], // Ng-bootstrap modals
     entryComponents: [
-        SampleModalComponent, LogoutModalComponent
+        LogoutModalComponent,
+        //Scaffolding, can be removed
+        SampleModalComponent, 
     ]
 })
 export class AppModule {

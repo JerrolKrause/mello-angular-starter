@@ -15,7 +15,10 @@ export class GlobalErrorHandler implements ErrorHandler {
     public handleError(error) {
 
         // Create error message, limit to 600 characters and add current page location
-        let errorConcat = 'Error at ' + window.location.href + '. ' + error.message.substring(0, 600);
+        let errorConcat = 'Error at ' + window.location.href + '. '
+        if (error.message){
+            errorConcat += error.message.substring(0, 600);
+        }
         let errorEscaped = errorConcat.replace(/[\"&<>]/g, (a) => { // Escape HTML before being outputted to DOM
             return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
         });

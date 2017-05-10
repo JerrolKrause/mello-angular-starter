@@ -29,7 +29,7 @@ export class AuthService{
         //return this.http.post(url, data);
         
         // Mock login
-        url = '/assets/mock-data/login.json';
+        url = 'assets/mock-data/login.json';
         return this.http.get(url).map(response => {
             window.sessionStorage.token = response.json().Token;
             this.setTimer(response.json().ExpirationSeconds);
@@ -42,19 +42,22 @@ export class AuthService{
      * Refresh the token
      */
     public refreshToken() {
-        console.log('Refreshing Token');
+        
         let url = 'api/Service/refreshToken';
-       
-        // Mock login
-        url = '/assets/mock-data/refreshtoken.json';
-        return this.http.get(url, <any>{ headers: { 'Authorization':'Bearer ' + window.sessionStorage.token } }).map(response => {
-            if (window.sessionStorage.token) { 
-                window.sessionStorage.token = response.json().Token;
-                this.setTimer(response.json().ExpirationSeconds);
-            }
-            return response;
-        }).subscribe();
-
+        
+        // If a token is present, refresh it
+        if (window.sessionStorage.token) { 
+            // Mock login
+            url = 'assets/mock-data/refreshtoken.json';
+            return this.http.get(url).map(response => {
+            
+                    console.log('Refreshing Token');
+                    window.sessionStorage.token = response.json().Token;
+                    this.setTimer(response.json().ExpirationSeconds);
+            
+                return response;
+            }).subscribe();
+        }
 
         /*
         return this.http.put(url, null, <any>{ headers: { 'Authorization':'Bearer ' + window.sessionStorage.token } }).subscribe(
