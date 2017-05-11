@@ -45,6 +45,19 @@
                 {{placeholder}}
             </textarea>
 
+            <!-- Password -->
+            <div class="input-group" *ngSwitchCase="'password'">
+                <input class="form-control" id="frm_{{frmControl}}" [formControlName]="frmControl" [attr.type]="showPwd ? 'text' : 'password'" [placeholder]="placeholder"
+                       [ngClass]="{
+               'form-control-danger' : field.invalid && field.dirty && field.touched,
+               'form-control-success' : field.valid && field.validator }" />
+                <button type="button" class="btn btn-secondary btn-sm input-group-addon" (click)="showPwd = !showPwd">
+                    <ng-template [ngIf]="!showPwd">Show</ng-template>
+                    <ng-template [ngIf]="showPwd">Hide</ng-template>
+                    Password
+                </button>
+            </div>
+
             <!-- Default input text box -->
             <input class="form-control" id="frm_{{frmControl}}" [formControlName]="frmControl" [type]="type" [placeholder]="placeholder"
                    *ngSwitchDefault [ngClass]="{

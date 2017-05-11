@@ -15,6 +15,7 @@ export class FieldComponent implements OnInit {
     @Input() modelLabel?: string; // If a model is supplied, this is the object property of the label for the user to read
 
     public field: any; // Hold a reference to the current field element, this is set in ngoninit
+    public showPwd: boolean = false;
 
     //@Output() onSuccess: EventEmitter<any> = new EventEmitter(); // A method to emit events to pass up to parent
     //this.onSuccess.emit(closeReason);
