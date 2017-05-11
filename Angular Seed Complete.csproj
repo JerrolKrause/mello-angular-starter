@@ -172,7 +172,7 @@
     <TypeScriptCompile Include="src\app\index.ts" />
     <TypeScriptCompile Include="src\app\containers\no-content\no-content.component.ts" />
     <TypeScriptCompile Include="src\app\shared\auth.service.ts" />
-    <TypeScriptCompile Include="src\app\shared\error.handler.ts" />
+    <TypeScriptCompile Include="src\app\shared\interceptors\error.interceptor.ts" />
     <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\app\shared\interceptors\http.interceptor.ts" />
     <TypeScriptCompile Include="src\app\shared\interceptors\auth-guard.interceptor.ts" />

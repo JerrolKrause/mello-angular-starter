@@ -9,7 +9,7 @@ declare var $: any;
 @Injectable()
 export class LoggingService {
 
-    // Master  list of static super properties, these are sent with every event
+    // Master  list of static super properties, these are sent with every event 
     private appType: any = {
         'Product': 'M',
         'User': 'A',
@@ -27,13 +27,11 @@ export class LoggingService {
 
     constructor(
     ) {
-        console.log('Loading Logging Service');
         //If we're on prod, set the prod flag
         if (window.location.hostname.toLowerCase().search(this.prodHost) > -1) {
             this.isProd = true;
         }
         this.loadScripts();
-
     }
 
 
@@ -48,7 +46,7 @@ export class LoggingService {
         if (this.isProd) {
             this.tokenCurrent = this.tokenProd
         }
-        console.log(this.tokenCurrent)
+
         //Load Google Analytics
         let currdate: any = new Date();
         (function (i, s, o, g, r, a, m) {
@@ -82,7 +80,7 @@ export class LoggingService {
             {
                 //Callback for when mixpanel loads successfully
                 loaded: (mixpanel) => {
-                    //this.init();
+                    this.init();
                 }
             })
     }//end loadScripts
@@ -94,11 +92,22 @@ export class LoggingService {
     */
     private init() {
 
-        //Identify current user
-        //mixpanel.identify(window.currentUser);
-
         //Add master list of super properties
         mixpanel.register(this.appType);
+
+        //Now that the app loaded, set the loaded flag to true
+        this.isLoaded = true;
+
+        //If there are items in the event queue that were passed before mixpanel was loaded
+        if (this.eventQueue.length) {
+            //Loop through the queue now and pass the events
+            this.eventQueue.map((obj) => {
+                let key = Object.keys(obj)[0];
+                this.trackEvent(key, obj[key]);
+            })
+            //Empty out the event queue
+            this.eventQueue = [];
+        }
 
     }//end init
 
@@ -109,7 +118,6 @@ export class LoggingService {
     * @param data - Object of custom data to pass to mixpanel
     */
     public trackEvent(eventName: string, data?: Object) {
-        console.log('trackEvent', eventName);
         let props = data || {};
         props['Url'] = window.location.pathname + window.location.hash
 
@@ -136,7 +144,6 @@ export class LoggingService {
      * @param aliasID
      */
     public alias(aliasID: string) {
-        console.warn('Aliasing', aliasID);
         if (!this.isProd) {
             console.warn('Aliasing to', aliasID);
         }

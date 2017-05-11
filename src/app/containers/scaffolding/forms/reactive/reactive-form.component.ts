@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 
@@ -6,7 +6,7 @@ import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@ang
   selector: 'reactive-form',  // <scaffolding></scaffolding>
   templateUrl: './reactive-form.component.html'
 })
-export class ReactiveFormComponent implements OnInit, OnChanges{
+export class ReactiveFormComponent implements OnInit{
 
     public formMain: FormGroup ;
     public states = ['CA', 'MD', 'OH', 'VA'];
@@ -65,8 +65,6 @@ export class ReactiveFormComponent implements OnInit, OnChanges{
             })
         });
 
-        console.log(this.formMain);
-
         // Reset form
         //this.formMain.reset();
 
@@ -84,10 +82,6 @@ export class ReactiveFormComponent implements OnInit, OnChanges{
         //console.log(this.formMain.get('name').value);
     }
 
-    ngOnChanges() {
-        console.log('Changing');
-    }
-    
 
     /**
      * On form submit

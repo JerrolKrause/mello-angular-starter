@@ -1,6 +1,6 @@
 ﻿
 a{
-    color:$pos-blue;
+    color:$pos-blue;cursor:pointer;
     &:hover, &:active, &:focus{text-decoration:none;}
     &.link{cursor:pointer}
 }

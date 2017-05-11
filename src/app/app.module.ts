@@ -1,12 +1,13 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-import { NgModule, ApplicationRef, ErrorHandler } from '@angular/core';
+import { NgModule, ApplicationRef, ErrorHandler, InjectionToken  } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store'; // Ngrx store (Redux)
 import { EffectsModule  } from '@ngrx/effects';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Bootstrap
+import { CookieModule } from 'ngx-cookie'; // Cookies - https://github.com/salemdar/ngx-cookie
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -80,7 +81,15 @@ const APP_PROVIDERS = [
     LoggingService,
     AuthService,
     AuthGuard,
-    HttpInterceptor
+    HttpInterceptor,
+    {// Global exception handler
+        provide: ErrorHandler,
+        useClass: GlobalErrorHandler
+    },
+    { //HTTp interceptor, modifies HTTP responses
+        provide: Http,
+        useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => new HttpInterceptor(xhrBackend, requestOptions), deps: [XHRBackend, RequestOptions]
+    }
 ];
 
 type StoreType = {
@@ -130,21 +139,13 @@ type StoreType = {
         // Add ngrx reducers here, works just like a normal dependency injection in a constructor
         StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// Inject stores here
         EffectsModule.run(StoreMainEffects),
-        // Bootstrap
-        NgbModule.forRoot()
+        NgbModule.forRoot(),// Bootstrap
+        CookieModule.forRoot() // Cookies
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
         APP_PROVIDERS,
-        Title,
-        {// Global exception handler
-            provide: ErrorHandler,
-            useClass: GlobalErrorHandler
-        },
-        {
-            provide: Http,
-            useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => new HttpInterceptor(xhrBackend, requestOptions), deps: [XHRBackend, RequestOptions]
-        }
+        Title
     ], // Ng-bootstrap modals
     entryComponents: [
         LogoutModalComponent,

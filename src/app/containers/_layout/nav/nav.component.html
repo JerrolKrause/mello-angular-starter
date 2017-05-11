@@ -10,12 +10,23 @@
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/scaffolding']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Scaffolding</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
-        </li>
     </ul>
+
+    <div ngbDropdown class="form-inline my-2 my-lg-0 hidden-md-down">
+        <a ngbDropdownToggle>
+            <i class="fa fa-user mr-1"></i> Jerrol Krause 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+            <a class="dropdown-item" [routerLink]="['/login']" >Change Password</a>
+            <a class="dropdown-item" (click)="authService.logOut()" >Log Out</a>
+        </div>
+    </div>
+
+
+    <!--
     <span class="form-inline my-2 my-lg-0 hidden-md-down">
         <i class="fa fa-user mr-1"></i> Jerrol Krause 
     </span>
+        -->
     <div class="nav-mobile-bg" (click)="isOpen = !isOpen"></div>
 </div>

@@ -152,3 +152,8 @@ interface IErrorApi {
     type: number;
     url: string;
 }
+
+interface ILogin {
+    username: string;
+    password: string;
+}

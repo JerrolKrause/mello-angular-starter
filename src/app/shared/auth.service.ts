@@ -50,11 +50,9 @@ export class AuthService{
             // Mock login
             url = 'assets/mock-data/refreshtoken.json';
             return this.http.get(url).map(response => {
-            
                     console.log('Refreshing Token');
                     window.sessionStorage.token = response.json().Token;
                     this.setTimer(response.json().ExpirationSeconds);
-            
                 return response;
             }).subscribe();
         }

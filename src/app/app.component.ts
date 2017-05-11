@@ -5,7 +5,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { AuthService } from 'app-shared';
+import { AuthService, LoggingService } from 'app-shared';
 
 /*
  * App Component
@@ -18,28 +18,31 @@ import { AuthService } from 'app-shared';
 })
 export class AppComponent implements OnInit {
 
-    errorApp: string;
-
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private title: Title,
-        private authService: AuthService
+        private authService: AuthService,
+        private loggingService: LoggingService
     ) {}
 
     public ngOnInit() {
-        // Change the document title on route change. Page titles are in app.routes.ts
+        // Perform actions on route change. 
+        // Page titles are in app.routes.ts
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
             .map(route => {
-                this.authService.refreshToken(); // On Route change, refresh authentication token
                 while (route.firstChild) route = route.firstChild;
                 return route;
             })
             .filter(route => route.outlet === 'primary')
             .mergeMap(route => route.data)
-            .subscribe((event) => this.title.setTitle(event['title']));
+            .subscribe((event) => {
+                this.title.setTitle(event['title']) // Change document title
+                this.authService.refreshToken(); // On Route change, refresh authentication token
+                this.loggingService.trackEvent('Page Viewed', { "Page Name": event['title'] }) // Log the page change
+            });
     }
 
 
