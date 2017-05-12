@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular Seed Complete", "Angular Seed Complete.csproj", "{0D7937BF-BB78-440D-B111-FF6FB64CD470}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular Ultimate Starter", "Angular Ultimate Starter.csproj", "{0D7937BF-BB78-440D-B111-FF6FB64CD470}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -24,7 +24,7 @@ export class AuthService{
      * Log the user in
      * @param data
      */
-    public logIn(data): Observable<any> {
+    public logIn(data): Observable<Response> {
         let url = this.http.webApiUrl + 'api/Service/login';
         //return this.http.post(url, data);
         
@@ -41,18 +41,18 @@ export class AuthService{
     /**
      * Refresh the token
      */
-    public refreshToken() {
+    public refreshToken():void {
         
         let url = this.http.webApiUrl + 'api/Service/refreshToken';
         
         // If a token is present, refresh it
-        if (window.sessionStorage.token) { 
+        if (window.sessionStorage.token) {
             // Mock login
             url = this.http.webApiUrl + 'assets/mock-data/refreshtoken.json';
-            return this.http.get(url).map(response => {
-                    console.log('Refreshing Token');
-                    window.sessionStorage.token = response.json().Token;
-                    this.setTimer(response.json().ExpirationSeconds);
+            this.http.get(url).map(response => {
+                console.log('Refreshing Token');
+                window.sessionStorage.token = response.json().Token;
+                this.setTimer(response.json().ExpirationSeconds);
                 return response;
             }).subscribe();
         }

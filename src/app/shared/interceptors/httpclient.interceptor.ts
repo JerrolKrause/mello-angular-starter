@@ -42,15 +42,6 @@ export class HttpClient {
         }
         return this.cache[url];
 
-        /*
-        // Return cached API response if available, if not make get request and cache it
-        return this.cache[url] || this.http.get(url, {
-            headers: headers
-        }).map(res => {
-            this.cache[url] = res; // Load into cache first
-            return res;
-        })
-        */
     } // end get
 
     /**

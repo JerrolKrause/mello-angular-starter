@@ -15,11 +15,13 @@ export class LogoutModalComponent implements OnInit {
     constructor(
         private modalService: NgbModal,
         public activeModal: NgbActiveModal
-    ) { }
+    ) {
+    }
 
     ngOnInit() {
         // Create a timer obserable that counts down
         this.logoutTimer$ = Observable.interval(1000).subscribe(res => {
+            //console.log('Timer ', res)
             // If timer is greater than 0, count down.
             if (this.counter > 1) {
                 this.counter--;
