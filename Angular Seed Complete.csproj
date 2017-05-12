@@ -133,6 +133,8 @@
     <Content Include="src\assets\mock-data\refreshtoken.json" />
     <Content Include="src\styles\brand\ld.scss" />
     <Content Include="src\styles\brand\mello.scss" />
+    <Content Include="src\styles\app\ui\_layout.scss" />
+    <Content Include="src\styles\app\components\_buttons.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -188,10 +190,7 @@
     <TypeScriptCompile Include="src\main.browser.ts" />
     <TypeScriptCompile Include="src\polyfills.browser.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\styles\app\components\" />
-    <Folder Include="src\styles\app\ui\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

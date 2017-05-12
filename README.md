@@ -25,7 +25,7 @@ Lots and lots of scaffolding/boilerplate for rapid development:
 
 ## Quick Start 
 ```bash
-# clone our repo
+# clone the repo
 # --depth 1 removes all but one .git commit history
 git clone --depth 1 https://github.com/JerrolKrause/angular-ultimate-starter.git
 
@@ -35,8 +35,6 @@ cd angular-ultimate-starter
 # install the repo with yarn
 yarn
 
-# If you don't have yarn installed, install it via npm first (lol)
-npm install --global yarn
 ```
 
 ```bash

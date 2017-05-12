@@ -6,12 +6,17 @@ $fa-font-path:"../../node_modules/font-awesome/fonts";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
 // Brand UI - Do add any styling to these files
-//@import "brand/ld";
-@import "brand/mello";
+//@import "brand/ld"; // LD brand styling
+@import "brand/mello"; // Mello brand styling
 
-// App UI - Styling specific to this app
-//@import "app/ui/variables";
+/**
+ *   App specific styling
+ */
+
+// App UI
+@import "app/ui/layout";
+
+// App Components
+@import "app/components/_buttons.scss";
 
 
-// App Components - Styling specific to this app
-//@import "app/components/variables";
