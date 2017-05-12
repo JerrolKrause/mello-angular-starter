@@ -36,7 +36,8 @@ import {
     StoreExampleComponent,
     RestApiComponent,
     TemplateFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    UiComponent
 } from 'app-containers';
 
 // Reusuable components
@@ -138,6 +139,7 @@ type StoreType = {
         ErrorComponent,
         ButtonModalComponent,
         FieldComponent,
+        LogoutModalComponent
 
         //Scaffolding, can be removed
         ScaffoldingComponent,
@@ -146,7 +148,7 @@ type StoreType = {
         ReactiveFormComponent,
         StoreExampleComponent,
         SampleModalComponent,
-        LogoutModalComponent
+        UiComponent
     ],
     // import Angular's modules
     imports: [ 
