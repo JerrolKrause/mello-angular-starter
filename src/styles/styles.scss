@@ -5,20 +5,13 @@
 $fa-font-path:"../../node_modules/font-awesome/fonts";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
-//@import url('http://s-web-dev-1:9000/_UI/src/ld.css');
+// Brand UI - Do add any styling to these files
+//@import "brand/ld";
+@import "brand/mello";
 
-//Global elements
-@import "globals/variables";
-@import "globals/mixins";
-@import "globals/layout";
-@import "globals/interactive";
-@import "globals/typography";
-@import "globals/forms";
+// App UI - Styling specific to this app
+//@import "app/ui/variables";
 
-//Components
-@import "components/accordions";
-@import "components/alerts";
-@import "components/buttons";
-@import "components/navbar";
-@import "components/cards";
-@import "components/tabs";
+
+// App Components - Styling specific to this app
+//@import "app/components/variables";

@@ -1,0 +1,21 @@
+﻿// Global branded styling. App specific styling should NOT go in this file
+ngb-accordion{
+    .card-header{
+        padding:0;font-size: 1.15rem; font-weight: bold;
+        & > a{
+            display:block;padding: 0.75rem 1.25rem;
+            &:before{font-family: FontAwesome;margin-right:7px;content: "\f0da";@include transition();display:inline-block;}
+        }
+        &.active > a:before{transform: rotate(90deg);@include transition(.1);}
+    }
+}
+
+// Inline accordion that is smaller
+.accordion-inline{
+    .card{background: transparent;border: 0; padding: 0;}
+    .card-header {
+        padding: 0; border: 0;background: transparent;font-size: 1rem;font-weight:normal;
+        a{display:block;padding: 0 0.5rem;}
+    }
+    .card-block{ padding: 0;padding-top: .75rem;}
+}

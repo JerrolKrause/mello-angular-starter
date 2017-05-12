@@ -1,0 +1,27 @@
+﻿// Global branded styling. App specific styling should NOT go in this file
+
+/***** Mello Brand Variables *****/
+$mello-blue             : #5e9aca;
+
+// Unique variables exclusively for user interaction components like <a> tags and buttons
+$mello-interact         : #5e9aca;
+$mello-interact-hover   : #5e9aca;
+$mello-interact-active  : #5e9aca;
+
+/***** LD Brand Variables *****/
+
+$ld-purple              : #5C2D91;
+$ld-purple-lt           : #ba89f1;
+$ld-purple-dk           : #593280;
+
+$ld-green               : #a4cd27;
+$ld-green-lt            : rgb(165,205,57);
+$ld-green-dk            : rgb(106,178,50);
+
+$ld-grey                : #d4d3d3;
+$ld-grey-lt             : #f1f1f1;
+
+// Unique variables exclusively for user interaction components like <a> tags and buttons
+$ld-interact            : #88b606;
+$ld-interact-hover      : $ld-green-lt;
+$ld-interact-active     : $ld-green-dk;

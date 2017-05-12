@@ -31,7 +31,10 @@ export class LoggingService {
         if (window.location.hostname.toLowerCase().search(this.prodHost) > -1) {
             this.isProd = true;
         }
-        this.loadScripts();
+        // Only load mixpanel if it isn't present. This solves a problem with HMR reloading the script on every change and blowing the stack
+        if (!window.mixpanel || !window.mixpanel.__loaded){
+            this.loadScripts();
+        }
     }
 
 
@@ -86,12 +89,11 @@ export class LoggingService {
     }//end loadScripts
 
 
-    /**
+    /** 
     * Business logic to happen after the analytics scripts have loaded
     * Super properties should be set here before any events are tracked so they are passed with every interaction
     */
     private init() {
-
         //Add master list of super properties
         mixpanel.register(this.appType);
 
@@ -108,7 +110,6 @@ export class LoggingService {
             //Empty out the event queue
             this.eventQueue = [];
         }
-
     }//end init
 
 
@@ -127,8 +128,10 @@ export class LoggingService {
             if (!this.isProd) {
                 console.warn(eventName + ' ' + this.appType.Product + this.appType.User + this.appType.Experience, props);
             }
-            mixpanel.track(eventName + ' ' + this.appType.Product + this.appType.User + this.appType.Experience, props);
-            ga('send', 'event', eventName);
+            try {
+                mixpanel.track(eventName + ' ' + this.appType.Product + this.appType.User + this.appType.Experience, props);
+                ga('send', 'event', eventName);
+            } catch (err) { console.warn(err) };
         }
         //If module is not loaded, pass this event into a queue that will pass the events after mixpanel loads
         else {
@@ -140,25 +143,30 @@ export class LoggingService {
 
 
     /**
-     * 
-     * @param aliasID
+     * Alias the current user
+     * @param aliasID - A unique user ID
      */
     public alias(aliasID: string) {
         if (!this.isProd) {
             console.warn('Aliasing to', aliasID);
         }
-        mixpanel.alias(aliasID);
+        try {
+            mixpanel.alias(aliasID);
+        } catch (err) { console.warn(err) };
+        
     } // end alias
 
     /**
-     * 
-     * @param registerID
+     * Register a user that has been previously tagged with alias
+     * @param registerID- A unique user ID
      */
     public identify(identifyID: string) {
         if (!this.isProd) {
             console.warn('Registering with ', identifyID);
         }
-        mixpanel.identify(identifyID);
+        try {
+            mixpanel.identify(identifyID);
+        } catch (err) { console.warn(err) };
     } // end identify
 
 }

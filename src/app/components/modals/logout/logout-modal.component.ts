@@ -9,7 +9,7 @@ import 'rxjs/add/operator/takeUntil';
 })
 export class LogoutModalComponent implements OnInit {
 
-    public logoutTimer$: Subscription; // Holds the countdown obserable
+    public logoutTimer$: Subscription; // Holds the countdown obserable 
     public counter: number = 120; // Log out after this many seconds
 
     constructor(
@@ -21,7 +21,7 @@ export class LogoutModalComponent implements OnInit {
         // Create a timer obserable that counts down
         this.logoutTimer$ = Observable.interval(1000).subscribe(res => {
             // If timer is greater than 0, count down.
-            if (this.counter > 0) {
+            if (this.counter > 1) {
                 this.counter--;
             }
             // If timer hits zero or below, CLOSE this modal which toggles the logout action in AuthService

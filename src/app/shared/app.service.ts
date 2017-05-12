@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
+
+import { HttpClient } from 'app-shared';
 
 export type InternalStateType = {
     [key: string]: any
@@ -9,12 +10,11 @@ export type InternalStateType = {
 
 @Injectable()
 export class AppState {
-
+    
     public usersUrl: string = 'https://jsonplaceholder.typicode.com/users';
-    private cache: any = {}; // Cache API responses using the URL as a primary key
-
+    
     constructor(
-        private http: Http
+        private http: HttpClient
     ) {
     }
 
@@ -23,14 +23,9 @@ export class AppState {
      * @param updateCache - Pass true to refresh the cache
      */
     public getMockUsers(updateCache?: boolean): Observable<Response> {
-        if (!this.cache[this.usersUrl]){
-            this.cache[this.usersUrl] = this.http.get(this.usersUrl)
-                .delay(2000)
-                .map(result => result.json())
-                .publishReplay(1)
-                .refCount();
-        }
-        return this.cache[this.usersUrl];
+        return this.http.get(this.usersUrl, false)
+            .map(result => result.json())
+            .delay(2000);
     } // end getMockUsersCached
 
     /**

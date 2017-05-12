@@ -1,10 +1,11 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+//import { Http, Response } from '@angular/http';
 import { Observable, Subscription } from "rxjs";
 import 'rxjs/add/operator/map';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Router} from '@angular/router';
 
+import { HttpClient } from 'app-shared';
 import { LogoutModalComponent } from 'app-components';
 
 @Injectable()
@@ -13,11 +14,10 @@ export class AuthService{
     public sessionTimer: any = null; // Holds the logout session timer
 
     constructor(
-        private http: Http,
+        private http: HttpClient,
         private modalService: NgbModal,
         private router: Router
     ) {
-
     }
 
     /**
@@ -25,11 +25,11 @@ export class AuthService{
      * @param data
      */
     public logIn(data): Observable<any> {
-        let url = 'api/Service/login';
+        let url = this.http.webApiUrl + 'api/Service/login';
         //return this.http.post(url, data);
         
         // Mock login
-        url = 'assets/mock-data/login.json';
+        url = this.http.webApiUrl + 'assets/mock-data/login.json';
         return this.http.get(url).map(response => {
             window.sessionStorage.token = response.json().Token;
             this.setTimer(response.json().ExpirationSeconds);
@@ -43,12 +43,12 @@ export class AuthService{
      */
     public refreshToken() {
         
-        let url = 'api/Service/refreshToken';
+        let url = this.http.webApiUrl + 'api/Service/refreshToken';
         
         // If a token is present, refresh it
         if (window.sessionStorage.token) { 
             // Mock login
-            url = 'assets/mock-data/refreshtoken.json';
+            url = this.http.webApiUrl + 'assets/mock-data/refreshtoken.json';
             return this.http.get(url).map(response => {
                     console.log('Refreshing Token');
                     window.sessionStorage.token = response.json().Token;
@@ -92,16 +92,19 @@ export class AuthService{
     /**
      * Launch a modal window which gives the user a chance to continue working
      */
-    private launchLogoutModal():void {
+    private launchLogoutModal(): void {
+        console.log('launchLogoutModal');
         clearTimeout(this.sessionTimer);
         let modalRef = this.modalService.open(LogoutModalComponent, <any>{ size: 'md' });
 
         // When the modal is closed via log out button
         modalRef.result.then((closeReason) => {
+            console.log('closeReason');
             this.logOut();
         },
         // When modal is dismissed
         (dismissReason) => {
+            console.log('dismissReason');
             this.refreshToken();
         });
     } // end launchLogoutModal
@@ -115,8 +118,5 @@ export class AuthService{
         window.sessionStorage.clear();
         this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
     } // end LogOut
-
-
-
 
 }

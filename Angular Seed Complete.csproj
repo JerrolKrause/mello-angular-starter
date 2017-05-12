@@ -116,21 +116,23 @@
     <Content Include="src\assets\mock-data\mock-data.json" />
     <Content Include="src\styles\styles.scss" />
     <Content Include=".editorconfig" />
-    <Content Include="src\styles\components\_accordions.scss" />
-    <Content Include="src\styles\components\_alerts.scss" />
-    <Content Include="src\styles\components\_buttons.scss" />
-    <Content Include="src\styles\globals\_variables.scss" />
-    <Content Include="src\styles\globals\_mixins.scss" />
-    <Content Include="src\styles\globals\_interactive.scss" />
-    <Content Include="src\styles\globals\_typography.scss" />
-    <Content Include="src\styles\globals\_forms.scss" />
-    <Content Include="src\styles\globals\_layout.scss" />
-    <Content Include="src\styles\components\_navbar.scss" />
-    <Content Include="src\styles\components\_cards.scss" />
-    <Content Include="src\styles\components\_tabs.scss" />
+    <Content Include="src\styles\brand\components\_accordions.scss" />
+    <Content Include="src\styles\brand\components\_alerts.scss" />
+    <Content Include="src\styles\brand\components\_buttons.scss" />
+    <Content Include="src\styles\brand\ui\_variables.scss" />
+    <Content Include="src\styles\brand\ui\_mixins.scss" />
+    <Content Include="src\styles\brand\ui\_interactive.scss" />
+    <Content Include="src\styles\brand\ui\_typography.scss" />
+    <Content Include="src\styles\brand\ui\_forms.scss" />
+    <Content Include="src\styles\brand\ui\_layout.scss" />
+    <Content Include="src\styles\brand\components\_navbar.scss" />
+    <Content Include="src\styles\brand\components\_cards.scss" />
+    <Content Include="src\styles\brand\components\_tabs.scss" />
     <Content Include=".tfignore" />
     <Content Include="src\assets\mock-data\login.json" />
     <Content Include="src\assets\mock-data\refreshtoken.json" />
+    <Content Include="src\styles\brand\ld.scss" />
+    <Content Include="src\styles\brand\mello.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -176,6 +178,7 @@
     <TypeScriptCompile Include="src\app\shared\index.ts" />
     <TypeScriptCompile Include="src\app\shared\interceptors\http.interceptor.ts" />
     <TypeScriptCompile Include="src\app\shared\interceptors\auth-guard.interceptor.ts" />
+    <TypeScriptCompile Include="src\app\shared\interceptors\httpclient.interceptor.ts" />
     <TypeScriptCompile Include="src\app\shared\logging.service.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.actions.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.effects.ts" />
@@ -185,7 +188,10 @@
     <TypeScriptCompile Include="src\main.browser.ts" />
     <TypeScriptCompile Include="src\polyfills.browser.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\styles\app\components\" />
+    <Folder Include="src\styles\app\ui\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,0 +1,24 @@
+﻿// Universal Brand UI
+@import "ui/variables";
+@import "ui/mixins";
+@import "ui/layout";
+@import "ui/interactive";
+@import "ui/typography";
+@import "ui/forms";
+
+// Universal Brand Components
+@import "components/accordions";
+@import "components/alerts";
+@import "components/buttons";
+@import "components/navbar";
+@import "components/cards";
+@import "components/tabs";
+
+
+// Brand specific global HTML styles
+// Only default html elements that cannot be semantically namespaced should go here. This section should be as small as possible
+a{
+    color:$ld-interact;
+    &:hover{color:$ld-interact-hover;}
+    &:active{color:$ld-interact-active;}
+}

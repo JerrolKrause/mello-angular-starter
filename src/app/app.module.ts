@@ -62,7 +62,7 @@ import {
 
     // Interceptors
     AuthGuard,
-    HttpInterceptor,
+    HttpClient,
 
     // State management
     InternalStateType,
@@ -74,22 +74,41 @@ import {
 import '../styles/styles.scss';
 
 // Application wide providers
-const APP_PROVIDERS = [
+export const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
+    Title,
     GlobalErrorHandler,
     AppState,
     LoggingService,
     AuthService,
     AuthGuard,
-    HttpInterceptor,
+    HttpClient,
     {// Global exception handler
         provide: ErrorHandler,
         useClass: GlobalErrorHandler
     },
+    // TODO2: This interceptor is breaking AOT, needs a new implementation method
+    //{ //HTTp interceptor, modifies HTTP responses
+    //    provide: Http,
+    //    useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => {return new HttpInterceptor(xhrBackend, requestOptions)},
+    //    deps: [XHRBackend, RequestOptions]
+    //}
+     /*
+    {
+        provide: HttpInterceptor,
+        useFactory:
+        (backend: XHRBackend, defaultOptions: RequestOptions, notifyService: NotifyService) => {
+            return new HttpService(backend, defaultOptions, notifyService);
+        },
+        deps: [XHRBackend, RequestOptions, LoaderService, Store]
+    }
+   
     { //HTTp interceptor, modifies HTTP responses
         provide: Http,
+        
         useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => new HttpInterceptor(xhrBackend, requestOptions), deps: [XHRBackend, RequestOptions]
     }
+    */
 ];
 
 type StoreType = {
@@ -144,8 +163,7 @@ type StoreType = {
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
-        APP_PROVIDERS,
-        Title
+        APP_PROVIDERS
     ], // Ng-bootstrap modals
     entryComponents: [
         LogoutModalComponent,
@@ -159,8 +177,10 @@ export class AppModule {
         public appRef: ApplicationRef,
         public appState: AppState,
         public authService: AuthService,
-        public loggingService: LoggingService
-    ) {}
+        public loggingService: LoggingService,
+        public httpClient: HttpClient
+    ) {
+    }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {

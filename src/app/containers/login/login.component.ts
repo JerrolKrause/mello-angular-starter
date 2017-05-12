@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
 
         this.authService.logIn(this.formMain.value).subscribe(
             (success) => {
+                console.log('Success');
                 // If the API response returns 200 but the login is invalid
                 if (success.status == 401 || success.status == 403) {
                     this.errorLogin = true;
@@ -86,6 +87,7 @@ export class LoginComponent implements OnInit {
                 }
             },
             (error) => {
+                console.log('Error', error);
                 this.errorLogin = true;
                 //error.errorMsg = 'Error logging in'
                 //this.errorApi = error; 

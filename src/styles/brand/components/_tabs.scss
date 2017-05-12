@@ -1,0 +1,8 @@
+﻿// Global branded styling. App specific styling should NOT go in this file
+.nav-tabs{
+    .nav-link.active{ background-color: #f7f7f9;border-bottom-color:#f7f7f9;}
+}
+
+.tab-content{
+    .card{border-top-left-radius:0;border-top-right-radius:0;border-top:0;}
+}

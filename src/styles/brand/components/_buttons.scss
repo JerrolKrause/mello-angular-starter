@@ -1,0 +1,23 @@
+﻿// Global branded styling. App specific styling should NOT go in this file
+
+// Buttons
+button{cursor:pointer;}
+.btn{
+    cursor:pointer;box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);@include transition( 0.2s);
+    &:hover:not([disabled]){box-shadow: 2px 4px 5px 0 rgba(0,0,0,.16),2px 4px 10px 0 rgba(0,0,0,.12);@include transition( 0.2s);transform: translate(-2px, -2px) scale(1.03);}
+
+    &.btn-mello{background: $mello-interact; border-color: $mello-interact;color:white;}
+    &.btn-ld{background: $ld-interact; border-color: $ld-interact;color:white;}
+
+    &.btn-waiting{
+        .fa{display:none;}
+        &:before{ font-family: FontAwesome;content: "\f110";@extend .fa-spin;display:inline-block;position:relative;left:-5px;}
+    }
+    &.btn-waiting-after{
+        .fa{display:none;}
+        &:after{ font-family: FontAwesome;content: "\f110";@extend .fa-spin;display:inline-block;position:relative;left:-5px;}
+    }
+}
+
+// Button Groups
+.input-group .btn, .input-group .btn:hover{box-shadow:none;transform:none;}

@@ -2,11 +2,6 @@
 import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 
-interface Window { webApiAddress: any; }
-// Get Web API location from window variable supplied in index.html
-const environment = (<any>window).webApiAddress || '/';
-
-
 @Injectable()
 export class HttpInterceptor extends Http {
     
@@ -43,6 +38,10 @@ export class HttpInterceptor extends Http {
      * @param req - string of url to modify
      */
     private updateUrl(req: string) {
+        //interface Window { webApiAddress: any; }
+        // Get Web API location from window variable supplied in index.html
+        const environment = (<any>window).webApiAddress || '/';
+
         // Check if URl request string contains an http call, if so, do not prepend the environment variable
         if (req.indexOf('http') != -1) {
             return req;
@@ -66,7 +65,6 @@ export class HttpInterceptor extends Http {
         if (window.sessionStorage.token){
             options.headers.append('Authorization', 'Bearer ' + window.sessionStorage.token);
         }
-
         
         return options;
     }
