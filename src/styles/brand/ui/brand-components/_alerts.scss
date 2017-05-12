@@ -1,8 +1,0 @@
-﻿.alert{
-    &.icon:before{font-family: FontAwesome;margin-right:5px;}
-    &.alert-danger.icon:before{content: "\f071";}
-    &.alert-success.icon:before{content: "\f164";}
-
-    &.alert-sm{}
-    &.alert-form{padding: 0.4rem .75rem;margin-top: .5rem;}
-}
