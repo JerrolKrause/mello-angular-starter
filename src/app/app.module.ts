@@ -139,7 +139,7 @@ type StoreType = {
         ErrorComponent,
         ButtonModalComponent,
         FieldComponent,
-        LogoutModalComponent
+        LogoutModalComponent,
 
         //Scaffolding, can be removed
         ScaffoldingComponent,
