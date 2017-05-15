@@ -9,6 +9,14 @@ button{cursor:pointer;}
     &.btn-mello{background: $mello-interact; border-color: $mello-interact;color:white;}
     &.btn-ld{background: $ld-interact; border-color: $ld-interact;color:white;}
 
+    &.btn-primary-mello{}
+
+
+    &.btn-mello-primary{}
+    &.btn-mello-primary-outline{}
+    &.btn-mello-primary-inverse{}
+
+
     &.btn-waiting{
         .fa{display:none;}
         &:before{ font-family: FontAwesome;content: "\f110";@extend .fa-spin;display:inline-block;position:relative;left:-5px;}
