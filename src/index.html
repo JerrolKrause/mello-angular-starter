@@ -1,27 +1,22 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+    <% if (webpackConfig.htmlElements.headTags) { %>
+    <!-- Configured Head Tags  -->
+    <%= webpackConfig.htmlElements.headTags %>
+    <% } %>
 
-  <title><%= htmlWebpackPlugin.options.title %></title>
-
-  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
-
-  <% if (webpackConfig.htmlElements.headTags) { %>
-  <!-- Configured Head Tags  -->
-  <%= webpackConfig.htmlElements.headTags %>
-  <% } %>
-
-  <!-- base url -->
-  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
-
+    <!-- base url -->
+    <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+    <%= htmlWebpackPlugin.files.webpackManifest %>
 
 </head>
-
 <body>
-    
     <app>
         <i class="fa fa-spinner fa-spin"></i> Loading...
     </app>
@@ -34,9 +29,15 @@
     <script src="/webpack-dev-server.js"></script>
     <% } %>
 
-    <noscript aria-hidden="true"><div class="no-support"><div class="container"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Please enable JavaScript to use this site.</div></div><style>body{padding-top: 2.5rem;}</style></noscript>
+    <noscript aria-hidden="true">
+        <div class="no-support"><div class="container"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Please enable JavaScript to use this site.</div></div>
+        <style>
+            body {
+                padding-top: 2.5rem;
+            }
+        </style>
+    </noscript>
     <!--[if lt IE 10]><div class="no-support"><div class="container"><span class="browsehappy"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to use this site.</span></div></div><style>body{padding-top: 2.5rem;}</style><![endif]-->
 
 </body>
 </html>
-
