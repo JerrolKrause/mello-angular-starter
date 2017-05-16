@@ -7,6 +7,7 @@
 
     <!-- Nested form group example -->
     <field-component [frmGroup]="formMain.controls.address" frmControl="street" label="Street"></field-component>
+    <field-component [frmGroup]="formMain.controls.address" frmControl="street2" label="Street Line 2" [disabled]="true"></field-component>
     <field-component [frmGroup]="formMain.controls.address" frmControl="city" label="City"></field-component>
     <field-component [frmGroup]="formMain.controls.address" frmControl="state" label="State" type="select" [model]="states"></field-component> <!-- Select box example -->
     

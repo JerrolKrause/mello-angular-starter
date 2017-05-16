@@ -23,7 +23,7 @@ export class RestApiComponent implements OnInit, OnDestroy {
         this.appState.getMockUsers()
             .takeUntil(this.ngUnsubscribe) // Register for easy un-sub
             .subscribe(
-            users => { console.log(users);this.users = users; }, // Get users
+            users => {this.users = users; }, // Get users
                 error => { error.errorMsg = 'Error getting users.'; console.log(error); this.usersError = error; }, // Errors
                 () => this.usersWaiting = false // End loading
             );

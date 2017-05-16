@@ -9,8 +9,9 @@ export class FieldComponent implements OnInit {
     @Input() frmGroup: any;
     @Input() frmControl: string; // Object property of reactive form
     @Input() label: string; // Label for the user to read
-    @Input() placeholder?: string = ''; // Placeholder property
     @Input() type: string = 'text'; // The type of the input box
+    @Input() placeholder?: string = ''; // Placeholder property
+    @Input() disabled: boolean = false; // Placeholder property
     @Input() model?: object; // Model data for a select box
     @Input() modelLabel?: string; // If a model is supplied, this is the object property of the label for the user to read
 

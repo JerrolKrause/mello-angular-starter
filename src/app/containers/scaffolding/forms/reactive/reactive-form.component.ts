@@ -3,7 +3,7 @@ import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@ang
 
 
 @Component({
-  selector: 'reactive-form',  // <scaffolding></scaffolding>
+  selector: 'reactive-form',
   templateUrl: './reactive-form.component.html'
 })
 export class ReactiveFormComponent implements OnInit{
@@ -31,8 +31,6 @@ export class ReactiveFormComponent implements OnInit{
     public ngOnInit(): void {
 
         /**
-         * 
-         
         //create daysFormGroup using FormGroup long-hand syntax
         //this is so I can create a dynamic form from the array of IDay objects
         let daysFormGroup: FormGroup = new FormGroup({});
@@ -48,6 +46,7 @@ export class ReactiveFormComponent implements OnInit{
             password: ['', [Validators.required, Validators.minLength(8)]],
             address: this.fb.group({ // <-- the child FormGroup
                 street: [''],
+                street2: new FormControl({ value: 'Test', disabled: true },[ Validators.required, Validators.minLength(5)]), // Adding disabled makes control ignore validators
                 city: ['', [Validators.required, Validators.maxLength(50)]],
                 state: ['', [Validators.required]], 
                 zip: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[0-9]{5}')]] // Sample validation with regex pattern
@@ -69,7 +68,7 @@ export class ReactiveFormComponent implements OnInit{
         //this.formMain.reset();
 
         // Set value replaces assigns a value to every field. Every field is required
-        //this.heroForm.setValue({
+        //this.formMain.setValue({
         //    name: this.hero.name,
         //    address: this.hero.addresses[0] || new Address()
         //});
@@ -102,7 +101,7 @@ export class ReactiveFormComponent implements OnInit{
 
 
         if (this.formMain.invalid) {
-            console.log('Form is invalid', Object.keys(this.formMain.controls));
+            //console.log('Form is invalid', Object.keys(this.formMain.controls));
 
             // A simple closure that loops through the form object and sets everything to dirty and touched
             // This activates the validation logic for every form field to show if a field is valid or invalid
@@ -120,7 +119,7 @@ export class ReactiveFormComponent implements OnInit{
 
             showErrors(this.formMain.controls);
         } else {
-            console.log('Valid ', this.formMain.value)
+            // console.log('Valid ', this.formMain.value)
 
            
 
