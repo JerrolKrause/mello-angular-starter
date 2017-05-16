@@ -10,7 +10,8 @@ import { LogoutModalComponent } from 'app-components';
 
 @Injectable()
 export class AuthService{
-    
+
+    public modalDuration: number = 120; // 120 How long to show the modal window
     public sessionTimer: any = null; // Holds the logout session timer
 
     constructor(
@@ -49,12 +50,12 @@ export class AuthService{
         if (window.sessionStorage.token) {
             // Mock login
             url = this.http.webApiUrl + 'assets/mock-data/refreshtoken.json';
-            this.http.get(url).map(response => {
-                console.log('Refreshing Token');
+            this.http.get(url).subscribe(response => {
+                // console.log('Refreshing Token');
                 window.sessionStorage.token = response.json().Token;
                 this.setTimer(response.json().ExpirationSeconds);
                 return response;
-            }).subscribe();
+            });
         }
 
         /*
@@ -81,30 +82,30 @@ export class AuthService{
      * @param ExpirationSeconds
      */
     private setTimer(ExpirationSeconds: number): void {
-        console.log('Setting session timer to ', ExpirationSeconds, ' seconds')
+        // console.log('Setting session timer to ', ExpirationSeconds, ' seconds');
         clearTimeout(this.sessionTimer);
+        // ExpirationSeconds = 20;
         this.sessionTimer = setTimeout(() => {
-            console.log('Timer Expired');
+            // console.log('Timer Expired');
             this.launchLogoutModal();
-        }, ExpirationSeconds * 1000);
+        }, (ExpirationSeconds - this.modalDuration) * 1000);
     } // end SetTimer
 
     /**
      * Launch a modal window which gives the user a chance to continue working
      */
     private launchLogoutModal(): void {
-        console.log('launchLogoutModal');
+        // console.log('launchLogoutModal');
         clearTimeout(this.sessionTimer);
         let modalRef = this.modalService.open(LogoutModalComponent, <any>{ size: 'md' });
+        modalRef.componentInstance.modalDuration = this.modalDuration; // Pass duration to timeout modal
 
         // When the modal is closed via log out button
         modalRef.result.then((closeReason) => {
-            console.log('closeReason');
             this.logOut();
         },
         // When modal is dismissed
         (dismissReason) => {
-            console.log('dismissReason');
             this.refreshToken();
         });
     } // end launchLogoutModal
@@ -113,7 +114,7 @@ export class AuthService{
      * Log the user out. Clear stored data and redirect to login page
      */
     public logOut(): void {
-        console.log('Logging Out');
+        // console.log('Logging Out');
         clearTimeout(this.sessionTimer);
         window.sessionStorage.clear();
         this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });

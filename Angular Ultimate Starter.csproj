@@ -136,6 +136,7 @@
     <Content Include="src\styles\brand\mello.scss" />
     <Content Include="src\styles\app\ui\_layout.scss" />
     <Content Include="src\styles\app\components\_buttons.scss" />
+    <Content Include="src\styles\brand\ui\_tables.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

@@ -10,7 +10,8 @@ import 'rxjs/add/operator/takeUntil';
 export class LogoutModalComponent implements OnInit {
 
     public logoutTimer$: Subscription; // Holds the countdown obserable 
-    public counter: number = 120; // Log out after this many seconds
+    public counter: number; // Log out after this many seconds
+    public modalDuration: number; // This number is passed in through the modal reference
 
     constructor(
         private modalService: NgbModal,
@@ -19,9 +20,10 @@ export class LogoutModalComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.counter = this.modalDuration; // How long to display the modal window
+
         // Create a timer obserable that counts down
         this.logoutTimer$ = Observable.interval(1000).subscribe(res => {
-            //console.log('Timer ', res)
             // If timer is greater than 0, count down.
             if (this.counter > 1) {
                 this.counter--;

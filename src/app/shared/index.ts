@@ -3,7 +3,6 @@
 export * from './interceptors/error.interceptor';
 export * from './interceptors/auth-guard.interceptor';
 export * from './interceptors/httpclient.interceptor';
-//export * from './interceptors/http.interceptor';
 
 // Services
 export * from './app.service';

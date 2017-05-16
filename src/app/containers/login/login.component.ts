@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
     * Submit the form
     */
     public onLogin() {
-        console.log('Submitting Form', this.formMain.value);
         this.waiting = true;
         this.errorApi = null;
         this.errorLogin = false;
@@ -73,21 +72,18 @@ export class LoginComponent implements OnInit {
 
         this.authService.logIn(this.formMain.value).subscribe(
             (success) => {
-                console.log('Success');
                 // If the API response returns 200 but the login is invalid
                 if (success.status == 401 || success.status == 403) {
                     this.errorLogin = true;
                 }
                 // Valid Login
                 else {
-                    console.log('Login successful');
                     this.loggingService.identify(this.formMain.value.email); // Identify user to mixpanel
                     this.loggingService.trackEvent('User Logged In');
                     this.router.navigate([this.returnUrl]);
                 }
             },
             (error) => {
-                console.log('Error', error);
                 this.errorLogin = true;
                 //error.errorMsg = 'Error logging in'
                 //this.errorApi = error; 
