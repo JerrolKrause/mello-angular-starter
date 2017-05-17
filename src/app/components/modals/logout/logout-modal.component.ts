@@ -30,6 +30,7 @@ export class LogoutModalComponent implements OnInit {
             }
             // If timer hits zero or below, CLOSE this modal which toggles the logout action in AuthService
             else {
+                this.logoutTimer$.unsubscribe();
                 this.activeModal.close();
             }
         });

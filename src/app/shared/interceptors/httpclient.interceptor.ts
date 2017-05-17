@@ -12,7 +12,7 @@ export class HttpClient {
     constructor(
         private http: Http
     ) {
-        this.webApiUrl = window['webApiAddress']; // Get the webApiUrl from the window variable
+        this.webApiUrl = (<any>window).webApiAddress; // Get the webApiUrl from the window variable
     }
 
     /**

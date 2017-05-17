@@ -37,6 +37,8 @@ header{
                  .nav-mobile-bg{position:fixed;@include transition();z-index:998;opacity:1;@include transition();}
             }
 
+            .navbar-nav .nav-link.active{background-color: #f7f7f9;}
+
             .dropdown{border-top: 1px solid #ccc;}
             .dropdown-toggle{display:none;}
             .dropdown-menu{display:block;border: 0;float: none;float: none;position: initial;width: 100%;}
