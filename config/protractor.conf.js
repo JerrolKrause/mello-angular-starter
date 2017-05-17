@@ -6,7 +6,7 @@ require('ts-node/register');
 var helpers = require('./helpers');
 
 exports.config = {
-  baseUrl: 'http://localhost:3000/',
+  baseUrl: 'http://localhost:4200/',
 
   /**
    * Use `npm run e2e`
@@ -28,15 +28,15 @@ exports.config = {
     includeStackTrace: false,
     defaultTimeoutInterval: 400000
   },
-  directConnect: true,
-
+  //chromeOnly: true,
+  //directConnect: true,
   capabilities: {
     'browserName': 'chrome',
     'chromeOptions': {
       'args': ['show-fps-counter=true']
     }
   },
-
+ 
   onPrepare: function() {
     browser.ignoreSynchronization = true;
   },

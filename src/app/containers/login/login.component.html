@@ -6,24 +6,24 @@
             <h1><i class="fa fa-user fa-mello"></i> Login</h1>
 
             <div class="card">
-                <form  [formGroup]="formMain" novalidate (ngSubmit)="onLogin()">
+                <form [formGroup]="formMain" novalidate (ngSubmit)="onLogin()">
                     <div class="card-block">
                         <h4>Enter your username and password</h4>
                         <error *ngIf="errorApi" [error]="errorApi"></error>
                         <div class="alert alert-danger icon" *ngIf="errorLogin">Invalid username or password.</div>
-                        <field-component [frmGroup]="formMain" frmControl="email" label="Email" type="email"></field-component>
-                        <field-component [frmGroup]="formMain" frmControl="password" label="Password" type="password"></field-component>
+                        <field-component [frmGroup]="formMain" frmControl="email" label="Email" type="email" classes="login"></field-component>
+                        <field-component [frmGroup]="formMain" frmControl="password" label="Password" type="password" classes="password"></field-component>
                         <div class="row">
                             <div class="form-check col-12 col-md-9 push-md-3">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" formControlName="remember"/>
+                                    <input type="checkbox" class="form-check-input remember" formControlName="remember"/>
                                     Remember my username
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button class="btn btn-mello" [disabled]="formMain.invalid">Log In</button>
+                        <button class="btn btn-mello" type="submit" [disabled]="formMain.invalid">Log In</button>
                     </div>
                 </form>
             </div>

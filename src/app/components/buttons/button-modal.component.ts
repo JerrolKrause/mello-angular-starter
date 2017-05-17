@@ -16,17 +16,18 @@ export class ButtonModalComponent implements OnInit {
     @Input() modal: string; // The name of the component modal
     @Input() data: any; // Any model data that needs to be passed to the modal component
     @Input() classes: string = 'btn btn-outline-primary btn-sm'; // CSS classes to apply to the button
-    @Input() size: any = "md"; // Default size of the modal, can be sm/md/lg
+    @Input() size: any = 'md'; // Default size of the modal, can be sm/md/lg
     @Output() onSuccess: EventEmitter<any> = new EventEmitter(); // A method to emit events to pass up to parent
 
     // List all modals with reference here, used for string lookup
-    private modalsList = {
+    public modalsList = {
         SampleModalComponent: SampleModalComponent
     }
     
     constructor(
         private modalService: NgbModal
-    ) { }
+    ) {
+    }
 
     ngOnInit() {
     }

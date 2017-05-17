@@ -152,11 +152,13 @@
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\app.resolver.ts" />
     <TypeScriptCompile Include="src\app\app.routes.ts" />
+    <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\buttons\button-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\error\error.component.ts" />
     <TypeScriptCompile Include="src\app\components\forms\field\field.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\logout\logout-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\login\login.component.e2e.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\template\template-form.component.ts" />
@@ -173,9 +175,7 @@
     <TypeScriptCompile Include="src\app\components\index.ts" />
     <TypeScriptCompile Include="src\app\containers\index.ts" />
     <TypeScriptCompile Include="src\app\environment.ts" />
-    <TypeScriptCompile Include="src\app\containers\home\home.component.spec.ts" />
     <TypeScriptCompile Include="src\app\containers\home\home.component.ts" />
-    <TypeScriptCompile Include="src\app\containers\home\home.e2e.ts" />
     <TypeScriptCompile Include="src\app\index.ts" />
     <TypeScriptCompile Include="src\app\containers\no-content\no-content.component.ts" />
     <TypeScriptCompile Include="src\app\shared\auth.service.ts" />

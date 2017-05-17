@@ -10,7 +10,7 @@ module.exports = function (config) {
     /**
      * Base path that will be used to resolve all patterns (e.g. files, exclude).
     */
-    basePath: '',
+    basePath: '.',
 
     /**
      * Frameworks to use

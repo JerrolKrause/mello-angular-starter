@@ -11,6 +11,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 /**
  * Webpack Constants
@@ -50,8 +51,12 @@ module.exports = function (options) {
       /**
        * Make sure root is src
        */
-      modules: [helpers.root('src'), 'node_modules']
-
+      modules: [helpers.root('src'), 'node_modules'],
+    plugins: [
+            new TsConfigPathsPlugin({
+            tsconfig: '../tsconfig.json'
+        })
+    ]
     },
 
     /**

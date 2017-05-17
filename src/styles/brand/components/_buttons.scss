@@ -10,12 +10,16 @@ button{cursor:pointer;}
     &.btn-ld{background: $ld-interact; border-color: $ld-interact;color:white;}
 
     &.btn-primary-mello{}
-
-
     &.btn-mello-primary{}
-    &.btn-mello-primary-outline{}
-    &.btn-mello-primary-inverse{}
 
+
+    //&.btn-mello-primary{}
+    //&.btn-mello-primary-outline{}
+    //&.btn-mello-primary-inverse{}
+
+    &.btn-ld-primary{}
+    &.btn-ld-primary-outline{}
+    &.btn-ld-primary-inverse{}
 
     &.btn-waiting{
         .fa{display:none;}
