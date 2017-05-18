@@ -28,17 +28,38 @@ exports.config = {
     includeStackTrace: false,
     defaultTimeoutInterval: 400000
   },
-  //chromeOnly: true,
-  //directConnect: true,
-  capabilities: {
-    'browserName': 'chrome',
-    'chromeOptions': {
-      'args': ['show-fps-counter=true']
-    }
-  },
  
+  capabilities: {
+      'browserName': 'chrome'
+  },
+    /*
+  multiCapabilities: [
+     // { 'browserName': 'chrome' },
+      //{ 'browserName': 'firefox' },
+      { 'browserName': 'internet explorer' },
+     // { 'browserName': 'edge' }
+  ],
+ */
   onPrepare: function() {
-    browser.ignoreSynchronization = true;
+      browser.ignoreSynchronization = true;
+
+      browser.get('/#/login');
+      element(by.css('form .login')).clear();
+      element(by.css('form .login')).sendKeys('TuNguyen@loandepot.com');
+      element(by.css('form .password')).clear();
+      element(by.css('form .password')).sendKeys('123456');
+      element(by.css('form button[type="submit"]')).click();
+
+      return browser.wait(() => {
+          return browser.getCurrentUrl().then((url) => {
+              if (url.indexOf('login') == -1) {
+                  return true;
+              } else {
+                  return false;
+              }
+          });
+      }, 5000);
+
   },
 
   /**

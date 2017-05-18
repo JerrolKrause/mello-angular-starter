@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         
         //If a token is set, do not allow users to hit the login page and route them to the index page
         if (window.sessionStorage.token){
-            this.router.navigate(['/']);
+            //this.router.navigate(['/']); // 2DO: Breaks automated testing, not essential but would be nice
         }
         
         this.formMain = this.fb.group({ // <-- the parent FormGroup

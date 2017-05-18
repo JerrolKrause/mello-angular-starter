@@ -50,7 +50,7 @@
                        [ngClass]="{
                'form-control-danger' : field.invalid && field.dirty && field.touched,
                'form-control-success' : field.valid && field.validator }" />
-                <button type="button" class="btn btn-secondary btn-sm input-group-addon" (click)="showPwd = !showPwd">
+                <button type="button" class="btn btn-secondary btn-sm input-group-addon toggle-pwd" (click)="showPwd = !showPwd">
                     <ng-template [ngIf]="!showPwd">Show</ng-template>
                     <ng-template [ngIf]="showPwd">Hide</ng-template>
                     Password
