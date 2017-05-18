@@ -158,6 +158,8 @@
     <TypeScriptCompile Include="src\app\components\forms\field\field.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\logout\logout-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\home\home.component.e2e.ts" />
+    <TypeScriptCompile Include="src\app\containers\home\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.e2e.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.ts" />

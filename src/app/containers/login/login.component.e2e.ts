@@ -2,24 +2,8 @@
 
 describe('login.component.ts', () => {
 
-    browser.get('/#/login');
-
-    /*
     beforeEach(() => {
        browser.get('/#/login');
-    });
-   */
-
-    it('should be on the login page', () => {
-        return browser.wait(() => {
-            return browser.getCurrentUrl().then((url) => {
-                if (url.indexOf('login') != -1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-        }, 1000);
     });
 
     it('should not have a nav menu', () => {
@@ -47,13 +31,6 @@ describe('login.component.ts', () => {
         expect<any>(subject).toEqual('text');
     });
 
-    it('should show hidden password after clicking Hide Password', () => {
-        element(by.css('form .toggle-pwd')).click();
-        let subject = element(by.css('form .password')).getAttribute('type')
-        let result = 'TuNguyen@loandepot.com';
-        expect<any>(subject).toEqual('password');
-    });
-
     it('should have login button enabled with valid email and password', () => {
         element(by.css('form .login')).sendKeys('TuNguyen@loandepot.com');
         element(by.css('form .password')).sendKeys('123456');
@@ -79,28 +56,56 @@ describe('login.component.ts', () => {
                 }
             });
         }, 5000);
-
     });
 
     it('should be able to click the logout button and be redirected to the login page', () => {
-        element(by.css('.navbar-mobile .dropdown-toggle')).click();
-        element(by.css('.navbar-mobile .logout')).click();
+        element(by.css('form .login')).clear();
+        element(by.css('form .login')).sendKeys('TuNguyen@loandepot.com');
+        element(by.css('form .password')).clear();
+        element(by.css('form .password')).sendKeys('123456');
+        element(by.css('form .remember')).click();
+        element(by.css('form button[type="submit"]')).click();
+
         return browser.wait(() => {
-            return browser.getCurrentUrl().then((url) => {
-                if (url.indexOf('login') != -1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-        }, 3000);
+            element(by.css('.navbar-mobile .dropdown-toggle')).click();
+            element(by.css('.navbar-mobile .logout')).click();
+            return browser.wait(() => {
+                return browser.getCurrentUrl().then((url) => {
+                    if (url.indexOf('login') != -1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            }, 1000);
+        }, 5000);
     });
-    
-    it('should remember login on page load and remember should be checked', () => {
-        browser.get('/#/login');
-        let subject = element(by.css('form .login'))
-        let result = 'TuNguyen@loandepot.com';
-        expect<any>(subject.getAttribute('value')).toEqual(result);
+
+    it('should remember the users login name if remember username was checked', () => {
+        element(by.css('form .login')).clear();
+        element(by.css('form .login')).sendKeys('TuNguyen@loandepot.com');
+        element(by.css('form .password')).clear();
+        element(by.css('form .password')).sendKeys('123456');
+        element(by.css('form .remember')).click();
+        element(by.css('form button[type="submit"]')).click();
+
+        return browser.wait(() => {
+            element(by.css('.navbar-mobile .dropdown-toggle')).click();
+            element(by.css('.navbar-mobile .logout')).click();
+            return browser.wait(() => {
+                let subject = element(by.css('form .login')).getAttribute('value');
+                let result = 'TuNguyen@loandepot.com';
+                return subject.then((val) => {
+                    if (val == result) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                })
+                //return expect<any>(subject).toEqual(result);
+            }, 1000);
+        }, 5000);
     });
-     
+
 });
