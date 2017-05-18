@@ -114,7 +114,7 @@ export class AuthService{
      * Log the user out. Clear stored data and redirect to login page
      */
     public logOut(): void {
-        // console.log('Logging Out');
+        //console.log('Logging Out');
         clearTimeout(this.sessionTimer);
         window.sessionStorage.clear();
         this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
