@@ -69,7 +69,10 @@ import {
     // State management
     InternalStateType,
     StoreMainReducer,
-    StoreMainEffects
+    StoreMainEffects,
+
+    // Pipes
+    SafeHtmlPipe
 } from 'app-shared';
 
 // Application stylesheet. Import everything here
@@ -150,7 +153,10 @@ type StoreType = {
         ReactiveFormComponent,
         StoreExampleComponent,
         SampleModalComponent,
-        UiComponent
+        UiComponent,
+
+        // Pipes
+        SafeHtmlPipe
     ],
     // import Angular's modules
     imports: [ 

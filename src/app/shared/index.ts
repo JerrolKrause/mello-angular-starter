@@ -10,3 +10,6 @@ export * from './interceptors/auth-guard.interceptor'; // Must go after auth ser
 
 export * from './stores/main/main.reducer';
 export * from './stores/main/main.effects';
+
+// Pipes
+export * from './pipes/safehtml.pipe';

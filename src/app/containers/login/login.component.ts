@@ -40,10 +40,13 @@ export class LoginComponent implements OnInit {
         }
         
         //If a token is set, do not allow users to hit the login page and route them to the index page
-        if (window.sessionStorage.token){
+        if (window.sessionStorage.token) {
             //this.router.navigate(['/']); // 2DO: Breaks automated testing, not essential but would be nice
         }
-        
+
+        window.clearTimeout(this.authService.sessionTimer); // When the page is loaded, clear any legacy timeouts
+        this.authService.logOutModal = null; // Get rid of logout modal if it persists
+
         this.formMain = this.fb.group({ // <-- the parent FormGroup
             email: [isLogin, [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
