@@ -2,7 +2,7 @@
 //import { Http, Response } from '@angular/http';
 import { Observable, Subscription } from "rxjs";
 import 'rxjs/add/operator/map';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Router} from '@angular/router';
 
 import { HttpClient } from 'app-shared';
@@ -13,6 +13,7 @@ export class AuthService{
 
     public modalDuration: number = 120; // 120 How long to show the modal window
     public sessionTimer: any = null; // Holds the logout session timer
+    public logOutModal: NgbModalRef;
 
     constructor(
         private http: HttpClient,
@@ -88,7 +89,7 @@ export class AuthService{
         this.sessionTimer = setTimeout(() => {
             // console.log('Timer Expired');
             this.launchLogoutModal();
-        }, (ExpirationSeconds - this.modalDuration) * 1000);
+        }, (ExpirationSeconds - this.modalDuration * 2) * 1000); // Double the modal duration to add a buffer between server countdown and browser countdown
     } // end SetTimer
 
     /**
@@ -97,16 +98,16 @@ export class AuthService{
     private launchLogoutModal(): void {
         // console.log('launchLogoutModal');
         clearTimeout(this.sessionTimer);
-        let modalRef = this.modalService.open(LogoutModalComponent, <any>{ size: 'md' });
-        modalRef.componentInstance.modalDuration = this.modalDuration; // Pass duration to timeout modal
+        this.logOutModal = this.modalService.open(LogoutModalComponent, <any>{ size: 'md' });
+        this.logOutModal.componentInstance.modalDuration = this.modalDuration; // Pass duration to timeout modal
 
         // When the modal is closed via log out button
-        modalRef.result.then((closeReason) => {
+        this.logOutModal.result.then((closeReason) => {
             this.logOut();
-        },
-        // When modal is dismissed
-        (dismissReason) => {
-            this.refreshToken();
+        }, (dismissReason) => {// When modal is dismissed
+            if (dismissReason != 'norefresh'){ 
+                this.refreshToken();
+            }
         });
     } // end launchLogoutModal
 

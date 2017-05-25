@@ -9,6 +9,7 @@ export * from './_layout/footer/footer.component';
 export * from './home/home.component';
 export * from './no-content/no-content.component';
 export * from './login/login.component';
+export * from './qa/qa.component'; // Page for QA to test e2e components
 
 export * from './scaffolding/scaffolding.component';
 export * from './scaffolding/ui/ui.component';

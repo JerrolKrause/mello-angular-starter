@@ -9,10 +9,10 @@ import { Subject } from 'rxjs/Subject';
 })
 export class ScaffoldingComponent implements OnInit, OnDestroy {
 
-    private ngUnsubscribe: Subject<void> = new Subject<void>(); // Holds observables to unsub from
     public users: any = [];
     public usersWaiting: boolean = true;
     public usersError: IErrorApi;
+    private ngUnsubscribe: Subject<void> = new Subject<void>(); // Holds observables to unsub from
 
     constructor(
         private appState: AppState

@@ -173,4 +173,5 @@
     "node": ">= 4.2.1",
     "npm": ">= 3"
   }
+, "-vs-binding":{"AfterBuild":["server:dev:hmr"]}
 }

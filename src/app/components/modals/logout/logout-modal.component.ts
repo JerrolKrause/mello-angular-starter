@@ -11,7 +11,7 @@ export class LogoutModalComponent implements OnInit {
 
     public logoutTimer$: Subscription; // Holds the countdown obserable 
     public counter: number; // Log out after this many seconds
-    public modalDuration: number; // This number is passed in through the modal reference
+    public modalDuration: number = 120; // This number is passed in through the modal reference, will default to 120 if not specified
 
     constructor(
         private modalService: NgbModal,

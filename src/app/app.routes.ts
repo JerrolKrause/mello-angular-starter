@@ -6,7 +6,8 @@ import {
     HomeComponent,
     NoContentComponent,
     ScaffoldingComponent,
-    LoginComponent
+    LoginComponent,
+    QaComponent
 } from 'app-containers';
 
 import { AuthGuard } from 'app-shared';
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
         children: [
             { path: '', component: HomeComponent, data: { title: 'Home' + titleSlug }, canActivate: [AuthGuard], },
             { path: 'scaffolding', component: ScaffoldingComponent, data: { title: 'Scaffolding' + titleSlug }, canActivate: [AuthGuard], },
+            { path: 'qa', component: QaComponent, data: { title: 'QA ' + titleSlug }, canActivate: [AuthGuard], },
             { path: '**', component: NoContentComponent, data: { title: 'Page Not Found' + titleSlug }, canActivate: [AuthGuard], },
         ]
     },

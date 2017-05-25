@@ -11,11 +11,11 @@
     </div>
 
     <div class="modal-footer" style="justify-content: space-between;">
-        <button type="button" class="btn btn-danger float-left pull-left" aria-label="Close" (click)="activeModal.close()">
+        <button type="button" class="btn btn-danger float-left pull-left" aria-label="Close" (click)="activeModal.close()" qa="logout">
             <i class="fa fa-power-off" aria-hidden="true"></i> 
             Log Out
         </button>
-        <button type="button" class="btn btn-mello" (click)="activeModal.dismiss()">
+        <button type="button" class="btn btn-mello" (click)="activeModal.dismiss()" qa="continue">
              Continue Working
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
         </button>

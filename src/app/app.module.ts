@@ -30,6 +30,7 @@ import {
     HomeComponent,
     NoContentComponent,
     LoginComponent,
+    QaComponent,
 
     // Scaffolding, can be removed
     ScaffoldingComponent,
@@ -134,6 +135,7 @@ type StoreType = {
         HomeComponent,
         NoContentComponent,
         LoginComponent,
+        QaComponent,
 
         // Components
         ErrorComponent,

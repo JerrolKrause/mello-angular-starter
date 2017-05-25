@@ -28,18 +28,24 @@ exports.config = {
     includeStackTrace: false,
     defaultTimeoutInterval: 400000
   },
- 
+
+  /*
   capabilities: {
       'browserName': 'chrome'
   },
-    /*
+  */
+
   multiCapabilities: [
-     // { 'browserName': 'chrome' },
+      { 'browserName': 'chrome' },
       //{ 'browserName': 'firefox' },
-      { 'browserName': 'internet explorer' },
-     // { 'browserName': 'edge' }
+      //{ 'browserName': 'internet explorer' }, // IE web driver is so slow it's freaking unusuable. Uncomment localSeleniumStandaloneOpts to use
+      //{ 'browserName': 'edge' }
   ],
- */
+
+  //localSeleniumStandaloneOpts: {
+      //jvmArgs: ["-Dwebdriver.ie.driver=config/e2e/IEDriverServer.exe"] // e.g: "node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer_x64_X.XX.X.exe"
+  //},
+ 
   onPrepare: function() {
       browser.ignoreSynchronization = true;
 

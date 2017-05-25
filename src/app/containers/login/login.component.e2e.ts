@@ -1,7 +1,7 @@
 ﻿import { browser, by, element } from 'protractor';
 
 describe('login.component.ts', () => {
-
+    /*
     beforeEach(() => {
        browser.get('/#/login');
     });
@@ -101,11 +101,9 @@ describe('login.component.ts', () => {
                     } else {
                         return false;
                     }
-
                 })
-                //return expect<any>(subject).toEqual(result);
             }, 1000);
         }, 5000);
     });
-
+    */
 });

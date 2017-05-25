@@ -1,9 +1,6 @@
 ﻿import { browser, by, element } from 'protractor';
 
 describe('home.component.ts', () => {
-
-    //browser.get('/#/');
-
     
     beforeEach(() => {
         browser.get('/#/');
@@ -15,7 +12,4 @@ describe('home.component.ts', () => {
         expect<any>(subject).toEqual(result);
     });
     
-
-    
-
 });

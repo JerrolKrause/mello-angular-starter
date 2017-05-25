@@ -46,6 +46,7 @@
     <Content Include="src\app\components\forms\field\field.component.html" />
     <Content Include="src\app\components\modals\logout\logout-modal.component.html" />
     <Content Include="src\app\components\modals\sample\sample-modal.component.html" />
+    <Content Include="src\app\containers\qa\qa.component.html" />
     <Content Include="src\app\containers\home\home.component.css" />
     <Content Include="src\app\containers\home\home.component.html" />
     <Content Include="src\app\containers\login\login.component.html" />
@@ -158,8 +159,9 @@
     <TypeScriptCompile Include="src\app\components\forms\field\field.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\logout\logout-modal.component.ts" />
     <TypeScriptCompile Include="src\app\components\modals\sample\sample-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\containers\qa\qa.component.e2e.ts" />
+    <TypeScriptCompile Include="src\app\containers\qa\qa.component.ts" />
     <TypeScriptCompile Include="src\app\containers\home\home.component.e2e.ts" />
-    <TypeScriptCompile Include="src\app\containers\home\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.e2e.ts" />
     <TypeScriptCompile Include="src\app\containers\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\containers\scaffolding\forms\reactive\reactive-form.component.ts" />
@@ -187,6 +189,7 @@
     <TypeScriptCompile Include="src\app\shared\interceptors\auth-guard.interceptor.ts" />
     <TypeScriptCompile Include="src\app\shared\interceptors\httpclient.interceptor.ts" />
     <TypeScriptCompile Include="src\app\shared\logging.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\safehtml.pipe.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.actions.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.effects.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.reducer.ts" />

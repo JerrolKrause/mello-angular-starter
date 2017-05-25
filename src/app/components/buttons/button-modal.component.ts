@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 // Import any modal content components
-import { SampleModalComponent } from 'app-components';
+import { SampleModalComponent, LogoutModalComponent } from 'app-components';
 
 
 @Component({
@@ -21,7 +21,8 @@ export class ButtonModalComponent implements OnInit {
 
     // List all modals with reference here, used for string lookup
     public modalsList = {
-        SampleModalComponent: SampleModalComponent
+        SampleModalComponent: SampleModalComponent,
+        LogoutModalComponent: LogoutModalComponent
     }
     
     constructor(
@@ -43,8 +44,12 @@ export class ButtonModalComponent implements OnInit {
 
         // Store reference to the modal instance
         let modalRef = this.modalService.open(modalToOpen, options);
+
+        if (this.data){ 
         // Add any passed in data to the modal instance
-        modalRef.componentInstance.data = this.data;
+            modalRef.componentInstance.data = this.data;
+        }
+
         // Wait for promise that is returned when modal is closed or dismissed
         modalRef.result.then((closeReason) => {
             // On modal close (which is the success indicator), emit OnSuccess method
