@@ -18,7 +18,7 @@ export class StoreExampleComponent implements OnInit {
     ) {
         this.storeMain$ = this.store.select('StoreMainReducer');// Sub to store via async pipe
     }
-
+     //TODO: Pass in server error message as part of response
     public ngOnInit() {
         // Reset state on every load, don't do this if the store is persistant
         this.store.dispatch({

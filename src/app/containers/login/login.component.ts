@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { CookieService } from 'ngx-cookie';
-
+import { Store } from '@ngrx/store';
+import { StoreMainActions } from "app-shared";
 import { AuthService, LoggingService } from 'app-shared';
 
 @Component({
@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
     public errorLogin: boolean;
     public showPassword: boolean = false;
     public returnUrl: string;
-    private cookie: any;
 
     constructor(
         private authService: AuthService,
@@ -25,18 +24,18 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private loggingService: LoggingService,
-        private cookies: CookieService
+        private store: Store<IStoreMain>
     ) {
     }
 
     public ngOnInit() {
 
-        // Get the site cookie and if a username is present, set the default value of the login form to that
-        this.cookie = this.cookies.getObject('loanDepotApp') || {};
-        let hasLogin, isLogin;
-        if (this.cookie.username){
+        
+
+        let isLogin, hasLogin;
+        if (window.localStorage.userName) {
             hasLogin = true;
-            isLogin = this.cookie.username;
+            isLogin = window.localStorage.userName;
         }
         
         //If a token is set, do not allow users to hit the login page and route them to the index page
@@ -48,8 +47,8 @@ export class LoginComponent implements OnInit {
         this.authService.logOutModal = null; // Get rid of logout modal if it persists
 
         this.formMain = this.fb.group({ // <-- the parent FormGroup
-            email: [isLogin, [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
+            userName: [isLogin, [Validators.required]],
+            password: ['', [Validators.required]],
             remember: [hasLogin]
         });
 
@@ -65,13 +64,21 @@ export class LoginComponent implements OnInit {
         this.errorApi = null;
         this.errorLogin = false;
 
+        //window.mixpanel.identify('eat@joes.com'); // Alias the email address
+        //window.setTimeout(() => window.mixpanel.identify(window.btoa('eat@joes.com')), 200); // Alias the HASHED email address after 200ms delay
+
+        this.loggingService.alias('eat@joes.com');
+        this.loggingService.alias(window.btoa('eat@joes.com'));
+        this.loggingService.trackEvent('Epic BS');
+        //this.loggingService.identify('eat@joes.com');
+        return false;
+
         // If the remember checkbox was checked
         if (this.formMain.value.remember) {
-            this.cookie.username = this.formMain.value.email; // Store the username
+            window.localStorage.userName = this.formMain.value.userName; // Store the username
         } else {
-            delete this.cookie.username; // Delete the username
+            delete window.localStorage.userName; // Delete the username
         }
-        this.cookies.putObject('loanDepotApp', this.cookie); // Store the cookie
 
         this.authService.logIn(this.formMain.value).subscribe(
             (success) => {

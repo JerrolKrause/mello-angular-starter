@@ -16,7 +16,8 @@ export const StoreMainActions = {
     // Waiting/In progress, usually for API interaction
     WAITING: 'WAITING',
     //Error handling, usually for API interaction
-    ERRORS: 'ERRORS'
+    ERRORS: 'ERRORS',
+    TEST : 'TEST'
 };
 
 //Define initial store state
@@ -73,7 +74,7 @@ export function StoreMainReducer(state: IStoreMain = initialLoanState, { type, p
             state.waiting[payload] = true; // Set waiting to true
             return Object.assign({}, state);
 
-        // Error handling, uses dictionary method that corresponds to the reducer action
+        // Error handling, uses dictionary method that corresponds to the reducer action  //TODO: Pass in server error message as part of response
         case StoreMainActions.ERRORS:
             state.waiting[payload] = false; // Reset waiting
             state.success[payload] = false; // Reset success

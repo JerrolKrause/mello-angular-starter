@@ -7,8 +7,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store'; // Ngrx store (Redux)
 import { EffectsModule  } from '@ngrx/effects';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Bootstrap
-import { CookieModule } from 'ngx-cookie'; // Cookies - https://github.com/salemdar/ngx-cookie
-
+import { DatePipe, CurrencyPipe } from '@angular/common';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -88,6 +87,7 @@ export const APP_PROVIDERS = [
     AuthService,
     AuthGuard,
     HttpClient,
+    DatePipe, CurrencyPipe, 
     {// Global exception handler
         provide: ErrorHandler,
         useClass: GlobalErrorHandler
@@ -169,7 +169,6 @@ type StoreType = {
         StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// Inject stores here
         EffectsModule.run(StoreMainEffects),
         NgbModule.forRoot(),// Bootstrap
-        CookieModule.forRoot() // Cookies
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,

@@ -27,8 +27,14 @@ export class AppComponent implements OnInit {
     ) {}
 
     public ngOnInit() {
-        // Perform actions on route change. 
-        // Page titles are in app.routes.ts
+        this.routeChange();
+    }
+
+    /**
+     * Actions to perform on route change
+     * Page titles are in app.routes.ts
+     */
+    public routeChange() {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
@@ -43,7 +49,6 @@ export class AppComponent implements OnInit {
                 this.authService.refreshToken(); // On Route change, refresh authentication token
                 this.loggingService.trackEvent('Page Viewed', { "Page Name": event['title'] }) // Log the page change
             });
-    }
-
+    } // end routeChange
 
 }

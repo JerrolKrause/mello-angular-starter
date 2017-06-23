@@ -14,14 +14,14 @@
                'form-control-danger' : field.invalid && field.dirty && field.touched,
                'form-control-success' : field.valid && field.validator }">
                 <option disabled selected value="">-- Please Select --</option>
-                <option *ngFor="let item of model" [value]="item[modelLabel] || item">{{item[modelLabel] || item}}</option>
+                <option *ngFor="let item of model" [value]="modelValue || item[modelLabel] || item">{{item[modelLabel] || item}}</option>
             </select>
 
             <!-- Radio Buttons -->
             <fieldset class="form-group {{classes}}" *ngSwitchCase="'radio'">
                 <div class="form-check" *ngFor="let item of model">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" [value]="item[modelLabel] || item" [formControlName]="frmControl" [checked]="field.value == (item[modelLabel] || item)">
+                        <input type="radio" class="form-check-input" [value]="modelValue || item[modelLabel] || item" [formControlName]="frmControl" [checked]="field.value == (item[modelLabel] || item)">
                         {{item[modelLabel] || item}}
                     </label>
                 </div>
@@ -31,7 +31,7 @@
             <fieldset class="form-group" *ngSwitchCase="'checkbox'" formGroupName="{{frmControl}}">
                 <div class="form-check" *ngFor="let item of model; let i = index">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input {{classes}}" [value]="item[modelLabel] || item"  [formControlName]="item.id || frmControl">
+                        <input type="checkbox" class="form-check-input {{classes}}" [value]="modelValue || item[modelLabel] || item" [formControlName]="item.id || frmControl">
                         {{item[modelLabel] || item}}
                     </label>
                 </div>
@@ -41,8 +41,7 @@
             <textarea class="form-control {{classes}}" id="frm_{{frmControl}}" [formControlName]="frmControl" rows="4"
                       *ngSwitchCase="'textarea'" [ngClass]="{
                'form-control-danger' : field.invalid && field.dirty && field.touched,
-               'form-control-success' : field.valid && field.validator }">
-            </textarea>
+               'form-control-success' : field.valid && field.validator }"></textarea>
 
             <!-- Password -->
             <div class="input-group" *ngSwitchCase="'password'">
@@ -55,6 +54,30 @@
                     <ng-template [ngIf]="showPwd">Hide</ng-template>
                     Password
                 </button>
+            </div>
+
+            <!-- Currency -->
+            <div *ngSwitchCase="'currency'">
+                <input class="form-control {{classes}}" type="text" [value]="altFormat" [disabled]="field.disabled"
+                       (keyup)="onCurrencyChange($event)" [placeholder]="placeholder" [ngClass]="{
+               'form-control-danger' : field.invalid && field.dirty && field.touched,
+               'form-control-success' : field.valid && field.validator }" />
+                <input id="frm_{{frmControl}}" [formControlName]="frmControl" type="hidden" />
+            </div>
+
+            <!-- Date -->
+            <div *ngSwitchCase="'date'">
+                <div class="input-group">
+                        <input class="form-control {{classes}}" id="frm_{{frmControl}}" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker"
+                                [ngModel]="altFormat" (ngModelChange)="onDateChange($event)" [ngModelOptions]="{standalone: true}" [ngClass]="{
+                               'form-control-danger' : field.invalid && field.dirty && field.touched,
+                               'form-control-success' : field.valid && field.validator }" />
+                        <button type="button" class="input-group-addon" (click)="d.toggle()" [disabled]="field.disabled">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    
+                    <input id="frm_{{frmControl}}" [formControlName]="frmControl" type="hidden" />
+                </div>
             </div>
 
             <!-- Default input text box -->

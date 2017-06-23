@@ -49,8 +49,10 @@ export class ReactiveFormComponent implements OnInit{
                 street2: new FormControl({ value: 'Test', disabled: true },[ Validators.required, Validators.minLength(5)]), // Adding disabled makes control ignore validators
                 city: ['', [Validators.required, Validators.maxLength(50)]],
                 state: ['', [Validators.required]], 
-                zip: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[0-9]{5}')]] // Sample validation with regex pattern
+                zip: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[0-9]{5}')]], // Sample validation with regex pattern
+                currency: ['50000', [Validators.required]] // Sample validation with regex pattern
             }),
+            date: ['', [Validators.required]],
             message: [''],
             colors: [this.colors[1]], //Set the default to the second item in the array
             days: this.fb.group({

@@ -36,7 +36,7 @@ export class HttpClient {
 
         // If this request is not in the cache or updateCache was requested (default behavior), load content into cache
         if (!this.cache[url] || updateCache) {
-            this.cache[url] = this.http.get(url)
+            this.cache[url] = this.http.get(url, { headers: headers })
                 .publishReplay(1)
                 .refCount();
         }
@@ -52,9 +52,7 @@ export class HttpClient {
     public post(url: string, data: any): Observable<any> {
         let headers = new Headers();
         this.createAuthorizationHeader(headers);
-        return this.http.post(url, data, {
-            headers: headers
-        });
+        return this.http.post(url, data, {headers: headers});
     } // end post
 
     /**
