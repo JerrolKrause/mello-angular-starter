@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
 
     public ngOnInit() {
 
-        
-
         let isLogin, hasLogin;
         if (window.localStorage.userName) {
             hasLogin = true;
@@ -63,16 +61,7 @@ export class LoginComponent implements OnInit {
         this.waiting = true;
         this.errorApi = null;
         this.errorLogin = false;
-
-        //window.mixpanel.identify('eat@joes.com'); // Alias the email address
-        //window.setTimeout(() => window.mixpanel.identify(window.btoa('eat@joes.com')), 200); // Alias the HASHED email address after 200ms delay
-
-        this.loggingService.alias('eat@joes.com');
-        this.loggingService.alias(window.btoa('eat@joes.com'));
-        this.loggingService.trackEvent('Epic BS');
-        //this.loggingService.identify('eat@joes.com');
-        return false;
-
+        
         // If the remember checkbox was checked
         if (this.formMain.value.remember) {
             window.localStorage.userName = this.formMain.value.userName; // Store the username

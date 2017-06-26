@@ -24,7 +24,7 @@ export class FieldComponent implements OnInit {
 
     public field: AbstractControl; // Hold a reference to the current field element, this is set in ngoninit
     public showPwd: boolean = false; // password toggler for password field
-    public altFormat: string | number = ''; // An alternate version of the field data that is formatted differently. IE currency
+    public altFormat: string | number = ''; // An alternate version of the field data that is formatted differently. IE currency or date
 
     private frmGroupSub: Subscription; // If this field elements needs to subscribe to form changes
 
@@ -40,12 +40,27 @@ export class FieldComponent implements OnInit {
         // Since the visible currency field is a mask and not connected to the main formgroup, it needs to know when the form model changes
         // This also handles loading the initial value
         if (this.type == 'currency') {
-            this.frmGroupSub = this.frmGroup.valueChanges.subscribe(res => {
+            if (this.field.value && this.field.value != '') { // On initial load
+                this.altFormat = this.currencyPipe.transform(this.field.value, 'USD', true, '1.0');
+            }
+            this.frmGroupSub = this.frmGroup.valueChanges.subscribe(res => { // If the form is updated dynamically after load
                 if (this.field.value && this.field.value != '') {
                     this.altFormat = this.currencyPipe.transform(this.field.value, 'USD', true, '1.0');
                 }
             });
         }
+
+        if (this.type == 'date') {
+            if (this.field.value && this.field.value != '') { // On initial load
+                this.altFormat = this.datePipe.transform(this.field.value, 'MM/dd/yyyy');
+            }
+            this.frmGroupSub = this.frmGroup.valueChanges.subscribe(res => { // If the form is updated dynamically after load
+                if (this.field.value && this.field.value != '') {
+                    this.altFormat = this.datePipe.transform(this.field.value, 'MM/dd/yyyy');
+                }
+            });
+        }
+
     }
 
     ngOnDestroy() {
@@ -86,9 +101,9 @@ export class FieldComponent implements OnInit {
      * @param $event - Dom event
      * TODO: Figure out a way to have the user viewable version match the newly formatted version
      */
-    onDateChange(altFormat:any) {
-        console.warn('Date Change', altFormat);
+    onDateChange(altFormat: any) {
         let newDate = `${altFormat.month}/${altFormat.day}/${altFormat.year}`; // Reformat the date
+        this.altFormat = newDate;
         this.field.setValue(newDate); // Set form value to the new format
     } // onDateChange
 

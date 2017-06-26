@@ -14,14 +14,14 @@
                'form-control-danger' : field.invalid && field.dirty && field.touched,
                'form-control-success' : field.valid && field.validator }">
                 <option disabled selected value="">-- Please Select --</option>
-                <option *ngFor="let item of model" [value]="modelValue || item[modelLabel] || item">{{item[modelLabel] || item}}</option>
+                <option *ngFor="let item of model" [value]="item[modelValue] || item[modelLabel] || item">{{item[modelLabel] || item}}</option>
             </select>
 
             <!-- Radio Buttons -->
             <fieldset class="form-group {{classes}}" *ngSwitchCase="'radio'">
                 <div class="form-check" *ngFor="let item of model">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" [value]="modelValue || item[modelLabel] || item" [formControlName]="frmControl" [checked]="field.value == (item[modelLabel] || item)">
+                        <input type="radio" class="form-check-input" [value]="item[modelValue]  || item[modelLabel] || item" [formControlName]="frmControl" [checked]="field.value == (item[modelLabel] || item)">
                         {{item[modelLabel] || item}}
                     </label>
                 </div>
@@ -31,7 +31,7 @@
             <fieldset class="form-group" *ngSwitchCase="'checkbox'" formGroupName="{{frmControl}}">
                 <div class="form-check" *ngFor="let item of model; let i = index">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input {{classes}}" [value]="modelValue || item[modelLabel] || item" [formControlName]="item.id || frmControl">
+                        <input type="checkbox" class="form-check-input {{classes}}" [value]="item[modelValue]  || item[modelLabel] || item" [formControlName]="item.id || frmControl">
                         {{item[modelLabel] || item}}
                     </label>
                 </div>
@@ -58,26 +58,34 @@
 
             <!-- Currency -->
             <div *ngSwitchCase="'currency'">
+                <!-- Holds the custom formatted output value -->
                 <input class="form-control {{classes}}" type="text" [value]="altFormat" [disabled]="field.disabled"
                        (keyup)="onCurrencyChange($event)" [placeholder]="placeholder" [ngClass]="{
                'form-control-danger' : field.invalid && field.dirty && field.touched,
                'form-control-success' : field.valid && field.validator }" />
+                <!-- Holds actual form value -->
                 <input id="frm_{{frmControl}}" [formControlName]="frmControl" type="hidden" />
             </div>
 
             <!-- Date -->
             <div *ngSwitchCase="'date'">
                 <div class="input-group">
-                        <input class="form-control {{classes}}" id="frm_{{frmControl}}" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker"
-                                [ngModel]="altFormat" (ngModelChange)="onDateChange($event)" [ngModelOptions]="{standalone: true}" [ngClass]="{
+                    <!-- Holds the correctly formatted date from the date picker, this is strictly presentational only -->
+                    <input class="form-control {{classes}}" id="frm_{{frmControl}}" placeholder="MM/dd/yyyy" disabled="disabled"
+                           [value]="altFormat" [ngClass]="{
                                'form-control-danger' : field.invalid && field.dirty && field.touched,
                                'form-control-success' : field.valid && field.validator }" />
-                        <button type="button" class="input-group-addon" (click)="d.toggle()" [disabled]="field.disabled">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" (click)="d.toggle()" [disabled]="field.disabled">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                         </button>
-                    
-                    <input id="frm_{{frmControl}}" [formControlName]="frmControl" type="hidden" />
+                    </span>
+
                 </div>
+                <!-- Holds the output from the datepicker which is not able to be custom formatted -->
+                <input ngbDatepicker #d="ngbDatepicker" [ngModel]="totallyDoesntMatter" (ngModelChange)="onDateChange($event)" [ngModelOptions]="{standalone: true}" type="hidden" />
+                <!-- Holds the actual form value -->
+                <input id="frm_{{frmControl}}" [formControlName]="frmControl" type="hidden" />
             </div>
 
             <!-- Default input text box -->
