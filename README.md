@@ -49,6 +49,9 @@ npm run build:aot
 
 # Serve prod build with:
 npm run server:prod
+
+# Update all npm packages
+npm install -g npm-check-updates && ncu -a && npm i && yarn
 ```
 
 
