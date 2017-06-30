@@ -1,55 +1,64 @@
-﻿//Actions
-export const StoreMainActions = {
-    RESET_STATE: 'RESET_STATE',
-    REFRESH_STATE: 'REFRESH_STATE',
-    
-    USERS_LOAD: 'USERS_LOAD', //Make GET request from API
-    USERS_LOADED: 'USERS_LOADED', //On success, load into store
+﻿import { State, StoreMainActionsBase } from 'app-shared';
 
-    USERS_ADD: 'USERS_ADD', // Make POST to API
-    USERS_ADDED: 'USERS_ADDED', // On success, load into store
-
-    MODAL : 'MODAL', //??? Add modals to state management
-
-    // Holds success responses, usually for API interaction
-    SUCCESS: 'SUCCESS',
-    // Waiting/In progress, usually for API interaction
-    WAITING: 'WAITING',
-    //Error handling, usually for API interaction
-    ERRORS: 'ERRORS',
-    TEST : 'TEST'
-};
 
 //Define initial store state
-const initialLoanState: IStoreMain = {
+const initialLoanState: State.main = {
     users: [],
-    waiting: {},
-    success: {},
-    errors: {}
+    auth: {},
+    api: {
+        waiting: {},
+        success: {},
+        errors: {}
+    }
 };
 
-export function StoreMainReducer(state: IStoreMain = initialLoanState, { type, payload }) {
+export function StoreMainReducer(state: State.main = initialLoanState, { type, payload }) {
     //console.log('STORE REDUCER:', type, payload);
+
+    /**
+     * Loop through an object and add its key/value pairs to local storage
+     * @param data - Any object of data
+     */
+    const addToStorage = (data: object) => {
+        Object.keys(data).forEach((key) => {
+            window.sessionStorage.setItem(key, data[key]);
+            if (key == 'csrfToken') {
+                window.sessionStorage.setItem('icwsToken', data[key]);
+            }
+        });
+    }
+
+    const updateNestedProperty = (obj, is, value) => {
+        if (typeof is == 'string')
+            return updateNestedProperty(obj, is.split('.'), value);
+        else if (is.length == 1 && value !== undefined)
+            return obj[is[0]] = value;
+        else if (is.length == 0)
+            return obj;
+        else
+            return updateNestedProperty(obj[is[0]], is.slice(1), value);
+    }
 
     switch (type) {
         //Reset State
-        case StoreMainActions.RESET_STATE:
+        case StoreMainActionsBase.RESET_STATE:
             
-            return {
-                users: [],
-                waiting: {},
-                success: {},
-                errors: {}
-            };
+            return initialLoanState;
 
         //Force a restore refresh
-        case StoreMainActions.REFRESH_STATE:
+        case StoreMainActionsBase.REFRESH_STATE:
             return Object.assign({}, state);
-            
+
+        // Manage simple status changes such as logged in or out
+        case StoreMainActionsBase.ADD_AUTH_DATA:
+            addToStorage(payload);
+            let newAuth = Object.assign({}, state.auth, payload);
+            return Object.assign({}, state, { auth: newAuth });
+
         //Users loaded from API
-        case StoreMainActions.USERS_LOADED:
-            state.errors[StoreMainActions.USERS_LOAD] = false; // Reset errors
-            state.waiting[StoreMainActions.USERS_LOAD] = false; // Reset waiting
+        case StoreMainActionsBase.USERS_LOADED:
+            state.api.errors[StoreMainActionsBase.USERS_LOAD] = false; // Reset errors
+            state.api.waiting[StoreMainActionsBase.USERS_LOAD] = false; // Reset waiting
            
             //state.users = payload;
             return Object.assign({},
@@ -58,27 +67,35 @@ export function StoreMainReducer(state: IStoreMain = initialLoanState, { type, p
             );
 
         //User posted successfully to API
-        case StoreMainActions.USERS_ADDED:
+        case StoreMainActionsBase.USERS_ADDED:
             state.users = [payload, ...state.users];
-            state.errors[StoreMainActions.USERS_ADD] = false; // Reset errors
-            state.waiting[StoreMainActions.USERS_ADD] = false; // Reset waiting
-            state.success[StoreMainActions.USERS_ADD] = true; // Set success to true
+            state.api.errors[StoreMainActionsBase.USERS_ADD] = false; // Reset errors
+            state.api.waiting[StoreMainActionsBase.USERS_ADD] = false; // Reset waiting
+            state.api.success[StoreMainActionsBase.USERS_ADD] = true; // Set success to true
             return Object.assign({}, state);
 
 
         // Dictionary actions for handling API states
         // Waiting or in progress actions, uses dictionary method that corresponds to the reducer action
-        case StoreMainActions.WAITING:
-            state.errors[payload] = false; // Reset errors
-            state.success[payload] = false; // Reset success
-            state.waiting[payload] = true; // Set waiting to true
+        case StoreMainActionsBase.WAITING:
+            delete state.api.errors[payload]; // Reset errors
+            delete state.api.success[payload]; // Reset success
+            state.api.waiting[payload] = true; // Set waiting to true
             return Object.assign({}, state);
 
-        // Error handling, uses dictionary method that corresponds to the reducer action  //TODO: Pass in server error message as part of response
-        case StoreMainActions.ERRORS:
-            state.waiting[payload] = false; // Reset waiting
-            state.success[payload] = false; // Reset success
-            state.errors[payload] = true; // Set error to true
+        // Dictionary actions for handling API states
+        // Success state
+        case StoreMainActionsBase.SUCCESS:
+            delete state.api.errors[payload]; // Reset errors
+            delete state.api.waiting[payload]; // Reset success
+            state.api.success[payload] = true; // Set waiting to true
+            return Object.assign({}, state);
+
+        // Error handling, uses dictionary method that corresponds to the reducer action
+        case StoreMainActionsBase.ERRORS:
+            delete state.api.waiting[payload.id]; // Reset waiting
+            delete state.api.success[payload.id]; // Reset success
+            state.api.errors[payload.id] = payload.response; // Set error to server message OR true if not supplied
             return Object.assign({}, state);
 
         //No type specified, return default state

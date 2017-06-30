@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { StoreMainActions } from "app-shared";
+import { StoreMainActions, State } from "app-shared";
 import { AuthService, LoggingService } from 'app-shared';
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private fb: FormBuilder,
         private loggingService: LoggingService,
-        private store: Store<IStoreMain>
+        private store: Store<State.global>
     ) {
     }
 
@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
         this.authService.logOutModal = null; // Get rid of logout modal if it persists
 
         this.formMain = this.fb.group({ // <-- the parent FormGroup
-            userName: [isLogin, [Validators.required]],
-            password: ['', [Validators.required]],
+            userName: [isLogin || 'someUser', [Validators.required]],
+            password: ['123456', [Validators.required]],
             remember: [hasLogin]
         });
 

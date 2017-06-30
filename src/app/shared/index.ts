@@ -8,8 +8,10 @@ export * from './auth.service';
 export * from './logging.service';
 export * from './interceptors/auth-guard.interceptor'; // Must go after auth service
 
+export * from './stores/main/main.actions';
 export * from './stores/main/main.reducer';
 export * from './stores/main/main.effects';
+export * from './stores/main/main.d';
 
 // Pipes
 export * from './pipes/safehtml.pipe';

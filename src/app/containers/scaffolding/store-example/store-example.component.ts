@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { StoreMainActions } from "app-shared";
+import { StoreMainActions, State } from "app-shared";
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,26 +10,32 @@ import { Observable } from 'rxjs';
 })
 export class StoreExampleComponent implements OnInit {
 
-    storeMain$: Observable<IStoreMain>;
+    storeMain$: Observable<State.main>;
     user: string;
 
     constructor(
-        private store: Store<IStoreMain>
+        private store: Store<State.global>,
+        private storeMainActions: StoreMainActions
     ) {
-        this.storeMain$ = this.store.select('StoreMainReducer');// Sub to store via async pipe
+        this.storeMain$ = this.store.select(state => state.main); // Sub via computed property
     }
      //TODO: Pass in server error message as part of response
     public ngOnInit() {
         // Reset state on every load, don't do this if the store is persistant
         this.store.dispatch({
-            type: StoreMainActions.RESET_STATE,
+            type: this.storeMainActions.actions.RESET_STATE,
             payload: null
         });
         // Load users into the store
         this.store.dispatch({
-            type: StoreMainActions.USERS_LOAD,
+            type: this.storeMainActions.actions.USERS_LOAD,
             payload: null
         }); 
+
+        this.storeMain$.subscribe(res => {
+            console.warn('Store', res);
+        })
+
     }
 
     /**
@@ -38,13 +44,13 @@ export class StoreExampleComponent implements OnInit {
     addUser() {
         //Set waiting animation
         this.store.dispatch({
-            type: StoreMainActions.WAITING,
-            payload: StoreMainActions.USERS_ADD
+            type: this.storeMainActions.actions.WAITING,
+            payload: this.storeMainActions.actions.USERS_ADD
         });
 
         //Add a user
         this.store.dispatch({
-            type: StoreMainActions.USERS_ADD,
+            type: this.storeMainActions.actions.USERS_ADD,
             payload: { name: this.user }
         });
     } // end addUser

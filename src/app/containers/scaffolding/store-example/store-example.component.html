@@ -1,23 +1,24 @@
 <div class="row" *ngIf="storeMain$ | async as store">
+
     <div class="col-12 col-md-6">
         <!-- Only 1 subscription to the observable
             Design pattern for how to handle loading API data from a store
         -->
-        <div class="alert alert-danger" *ngIf="store.errors.USERS_LOAD"><i class="fa fa-alert"></i> Error loading users</div>
-        <div *ngIf="!store.users.length && !store.errors.USERS_LOAD"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
+        <div class="alert alert-danger" *ngIf="store.api.errors.USERS_LOAD"><i class="fa fa-alert"></i> Error loading users</div>
+        <div *ngIf="!store.users.length && !store.api.errors.USERS_LOAD"><i class="fa fa-spinner fa-spin"></i> Loading users...</div>
         <ul *ngIf="store.users.length">
             <li *ngFor="let user of store.users">{{user.name}}</li>
         </ul>
     </div>
     <div class="col-12 col-md-6">
-        <div class="alert alert-danger" *ngIf="store.errors.USERS_ADD"><i class="fa fa-alert"></i> Error adding user</div>
-        <div class="alert alert-success" *ngIf="store.success.USERS_ADD"><i class="fa fa-alert"></i> Success adding user</div>
+        <div class="alert alert-danger" *ngIf="store.api.errors.USERS_ADD"><i class="fa fa-alert"></i> Error adding user</div>
+        <div class="alert alert-success" *ngIf="store.api.success.USERS_ADD"><i class="fa fa-alert"></i> Success adding user</div>
         <form name="formAddUser" (ngSubmit)="addUser()">
             <p>
                 <input name="user" class="form-control" [(ngModel)]="user" placeholder="Some Dude" />
             </p>
             <p>
-                <button class="btn btn-primary" type="submit" [disabled]="store.waiting.USERS_ADD" [ngClass]="{'btn-waiting':store.waiting.USERS_ADD}">
+                <button class="btn btn-primary" type="submit" [disabled]="store.api.waiting.USERS_ADD" [ngClass]="{'btn-waiting':store.api.waiting.USERS_ADD}">
                     <i class="fa fa-user-plus"></i> Add User
                 </button>
             </p>

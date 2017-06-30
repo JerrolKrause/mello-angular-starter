@@ -191,6 +191,7 @@
     <TypeScriptCompile Include="src\app\shared\logging.service.ts" />
     <TypeScriptCompile Include="src\app\shared\pipes\safehtml.pipe.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.actions.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\main\main.d.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.effects.ts" />
     <TypeScriptCompile Include="src\app\shared\stores\main\main.reducer.ts" />
     <TypeScriptCompile Include="src\custom-typings.d.ts" />

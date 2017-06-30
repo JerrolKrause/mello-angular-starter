@@ -69,6 +69,7 @@ import {
     InternalStateType,
     StoreMainReducer,
     StoreMainEffects,
+    StoreMainActions,
 
     // Pipes
     SafeHtmlPipe
@@ -87,6 +88,7 @@ export const APP_PROVIDERS = [
     AuthService,
     AuthGuard,
     HttpClient,
+    StoreMainActions,
     DatePipe, CurrencyPipe, 
     {// Global exception handler
         provide: ErrorHandler,
@@ -166,7 +168,7 @@ type StoreType = {
         HttpModule,
         RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
         // Add ngrx reducers here, works just like a normal dependency injection in a constructor
-        StoreModule.provideStore({ StoreMainReducer: StoreMainReducer}),// Inject stores here
+        StoreModule.provideStore({ main: StoreMainReducer}),// Inject stores here
         EffectsModule.run(StoreMainEffects),
         NgbModule.forRoot(),// Bootstrap
     ],
