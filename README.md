@@ -1,6 +1,6 @@
-# Angular Ultimate Starter
+# Mello Angular Starter
 An Angular Seed/Starter based on the excellent https://github.com/AngularClass/angular2-webpack-starter. 
-This repo's main purpose to kickstart loanDepot webapps with our core technology stack.
+This repo's main purpose to kickstart mello webapps with our core technology stack.
 
 Includes the following additional elements:
 <ul>
