@@ -4,7 +4,7 @@ This repo's main purpose to kickstart loanDepot webapps with our core technology
 
 Includes the following additional elements:
 <ul>
-	<li>Angular 4</li>
+	<li>Angular 6+</li>
 	<li>TypeScript 2 barrels/paths</li>
 	<li>Bootstrap 4</li>
 	<li>Ng-Boostrap</li>
